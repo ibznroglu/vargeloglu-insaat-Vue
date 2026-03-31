@@ -48,10 +48,10 @@ type ProjectItem = {
 
 const projects: ProjectItem[] = [
   {
-    title: 'Caslita Otel',
+    title: 'Calista Otel',
     period: '2005-2006',
     image: slide01,
-    alt: 'Caslita Otel için örnek proje görseli',
+    alt: 'Calista Otel için örnek proje görseli',
     description:
       'Otel çevresi uygulamaları, saha düzenleme süreçleri ve altyapı odaklı işler kapsamında yürütülen örnek proje çalışması.',
   },
