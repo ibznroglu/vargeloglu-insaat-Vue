@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="layout">
     <Navbar />
     <main>
       <slot />
@@ -14,7 +14,12 @@ import Footer from '../components/Footer.vue'
 </script>
 
 <style scoped>
+.layout {
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
 main {
-  padding: 20px;
+  width: 100%;
 }
 </style>
