@@ -1,9 +1,11 @@
 <template>
   <div class="layout">
     <Navbar />
-    <main>
+
+    <main class="site-main">
       <slot />
     </main>
+
     <Footer />
   </div>
 </template>
@@ -16,10 +18,18 @@ import Footer from '../components/Footer.vue'
 <style scoped>
 .layout {
   min-height: 100vh;
-  background: var(--color-bg);
+  background: #f7f4ee;
 }
 
-main {
+.site-main {
   width: 100%;
+  min-height: 100vh;
+  padding-top: 112px;
+}
+
+@media (min-width: 1024px) {
+  .site-main {
+    padding-top: 0;
+  }
 }
 </style>
