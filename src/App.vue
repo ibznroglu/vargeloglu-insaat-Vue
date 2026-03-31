@@ -1,6 +1,6 @@
 <template>
   <MainLayout>
-    <Hero />
+    <HeroSlider />
     <About />
     <Services />
     <Contact />
@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import MainLayout from './layouts/MainLayout.vue'
-import Hero from './components/Hero.vue'
+import HeroSlider from './components/HeroSlider.vue'
 import About from './components/About.vue'
 import Services from './components/Services.vue'
 import Contact from './components/Contact.vue'
