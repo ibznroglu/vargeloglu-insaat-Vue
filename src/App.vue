@@ -5,6 +5,7 @@
     <Services />
     <Projects />
      <Gallery />
+     <References />
     <Contact />
   </MainLayout>
 </template>
@@ -16,5 +17,6 @@ import CompanyIntro from './components/CompanyIntro.vue'
 import Services from './components/Services.vue'
 import Projects from './components/Projects.vue'
 import Gallery from './components/Gallery.vue'
+import References from './components/References.vue'
 import Contact from './components/Contact.vue'
 </script>
