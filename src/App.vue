@@ -4,6 +4,7 @@
     <CompanyIntro />
     <Services />
     <Projects />
+     <Gallery />
     <Contact />
   </MainLayout>
 </template>
@@ -14,5 +15,6 @@ import Hero from './components/Hero.vue'
 import CompanyIntro from './components/CompanyIntro.vue'
 import Services from './components/Services.vue'
 import Projects from './components/Projects.vue'
+import Gallery from './components/Gallery.vue'
 import Contact from './components/Contact.vue'
 </script>

@@ -50,6 +50,7 @@ const navItems = [
   { label: 'Anasayfa', href: '#top' },
   { label: 'Faaliyetlerimiz', href: '#faaliyetlerimiz' },
   { label: 'Projeler', href: '#projeler' },
+  { label: 'Galeri', href: '#galeri' },
   { label: 'İletişim', href: '#iletisim' },
 ]
 </script>
