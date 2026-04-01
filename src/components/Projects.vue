@@ -8,7 +8,7 @@
 
       <div class="projects-grid">
         <article v-for="project in projects" :key="project.title" class="project-card">
-          <img :src="testImage" :alt="project.title" class="project-image" />
+          <img :src="project.image" :alt="project.title" class="project-image" />
           <div class="project-body">
             <h3>{{ project.title }}</h3>
             <p>{{ project.period }}</p>
@@ -20,14 +20,19 @@
 </template>
 
 <script setup lang="ts">
-import testImage from '../assets/test.jpg'
+// Foto importları
+import calista from '../assets/project-companies/calista-resort.jpg'
+import ela from '../assets/project-companies/ela-quality-resort.jpg'
+import susesi from '../assets/project-companies/susesi.jpg'
+import carya from '../assets/project-companies/regnum-carya.jpg'
+import zeynep from '../assets/project-companies/zeynep-golf.jpg'
 
 const projects = [
-  { title: 'Calista Otel', period: '2005-2006' },
-  { title: 'Ela Quality Resort Otel', period: '2006-2007' },
-  { title: 'Su Sesi Otel', period: '2006-2007' },
-  { title: 'Carya Golf Club', period: '2007-2008' },
-  { title: 'Zeynep Golf Resort Otel', period: '2010-2011' },
+  { title: 'Calista Otel', period: '2005-2006', image: calista },
+  { title: 'Ela Quality Resort Otel', period: '2006-2007', image: ela },
+  { title: 'Susesi Luxury Resort', period: '2006-2007', image: susesi },
+  { title: 'Carya Golf Club', period: '2007-2008', image: carya },
+  { title: 'Zeynep Golf Resort Otel', period: '2010-2011', image: zeynep },
 ]
 </script>
 
@@ -52,24 +57,28 @@ const projects = [
 }
 
 .projects-grid {
-  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: 16px;
+  margin-top: 20px;
 }
 
 .project-card {
-  overflow: hidden;
-  border-radius: 14px;
   background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
   border: 1px solid #e5e7eb;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.project-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px rgba(15, 23, 32, 0.06);
 }
 
 .project-image {
   width: 100%;
-  aspect-ratio: 16 / 10;
-  object-fit: contain;
-  display: block;
+  aspect-ratio: 16/10;
+  object-fit: cover;
 }
 
 .project-body {

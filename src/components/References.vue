@@ -78,7 +78,7 @@ const references = [
     manager: 'Proje Müdürü: Tolga OZAN',
   },
   {
-    title: 'Max Royal Golf Club (Papillon) Golf Villaları',
+    title: 'Maxx Royal Golf Club (Papillon) Golf Villaları',
     period: '2010-2011',
     project: '',
     location: 'Antalya Belek',
@@ -130,24 +130,29 @@ const references = [
 }
 
 .references-grid {
-  margin-top: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: 16px;
+  margin-top: 20px;
 }
 
 .reference-card {
-  overflow: hidden;
-  border-radius: 14px;
   background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
   border: 1px solid #e5e7eb;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.reference-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 20px rgba(15, 23, 32, 0.06);
 }
 
 .reference-image {
   width: 100%;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 16/10;
   object-fit: cover;
-  display: block;
 }
 
 .reference-body {
@@ -157,7 +162,12 @@ const references = [
 .reference-body h3 {
   font-size: 1rem;
   color: #0f1720;
-  line-height: 1.3;
+}
+
+.reference-body p {
+  margin-top: 4px;
+  font-size: 0.85rem;
+  color: #5b6570;
 }
 
 .reference-period {
@@ -165,13 +175,6 @@ const references = [
   font-size: 0.85rem;
   font-weight: 700;
   color: #a67c45;
-}
-
-.reference-body p {
-  margin-top: 4px;
-  font-size: 0.85rem;
-  color: #5b6570;
-  line-height: 1.5;
 }
 
 @media (max-width: 768px) {
