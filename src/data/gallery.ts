@@ -7,6 +7,8 @@ export type GalleryItem = {
   id: string
   src: string
   alt: string
+  width: number
+  height: number
 }
 
 export const galleryItems: GalleryItem[] = Object.entries(imageModules)
@@ -20,4 +22,6 @@ export const galleryItems: GalleryItem[] = Object.entries(imageModules)
     id: `gallery-${index + 1}`,
     src,
     alt: `Vargeloğlu İnşaat galeri görseli ${index + 1}`,
+    width: 1600,
+    height: 1200,
   }))

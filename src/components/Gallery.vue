@@ -6,15 +6,18 @@
         <h2>Uygulamalarımızdan görseller</h2>
       </div>
 
-      <div class="gallery-grid">
-        <button
+      <div id="gallery-grid" class="gallery-grid">
+        <a
           v-for="item in visibleItems"
           :key="item.id"
-          type="button"
+          :href="item.src"
           class="gallery-card"
+          :data-pswp-width="item.width"
+          :data-pswp-height="item.height"
+          :aria-label="item.alt"
         >
           <img :src="item.src" :alt="item.alt" loading="lazy" decoding="async" />
-        </button>
+        </a>
       </div>
 
       <button
@@ -30,7 +33,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import PhotoSwipeLightbox from 'photoswipe/lightbox'
+import 'photoswipe/style.css'
 import { galleryItems } from '../data/gallery'
 
 const previewCount = 12
@@ -39,6 +44,23 @@ const isExpanded = ref(false)
 const visibleItems = computed(() =>
   isExpanded.value ? galleryItems : galleryItems.slice(0, previewCount),
 )
+
+let lightbox: PhotoSwipeLightbox | null = null
+
+onMounted(() => {
+  lightbox = new PhotoSwipeLightbox({
+    gallery: '#gallery-grid',
+    children: 'a',
+    pswpModule: () => import('photoswipe'),
+  })
+
+  lightbox.init()
+})
+
+onBeforeUnmount(() => {
+  lightbox?.destroy()
+  lightbox = null
+})
 </script>
 
 <style scoped>
@@ -70,11 +92,8 @@ const visibleItems = computed(() =>
 
 .gallery-card {
   overflow: hidden;
-  padding: 0;
-  border: 0;
   border-radius: 14px;
   background: #fff;
-  cursor: pointer;
 }
 
 .gallery-card img {
