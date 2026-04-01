@@ -55,7 +55,6 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .hero {
-  padding: 120px 0 40px;
   background: #f7f4ee;
 }
 

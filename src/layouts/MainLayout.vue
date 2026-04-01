@@ -24,7 +24,7 @@ import Footer from '../components/Footer.vue'
 .site-main {
   width: 100%;
   min-height: 100vh;
-  padding-top: 112px;
+  padding-top: 0;
 }
 
 @media (min-width: 1024px) {

@@ -3,10 +3,8 @@
     <div class="container">
       <div class="company-intro__card">
         <div class="company-intro__content">
-          <span class="company-intro__eyebrow">Kurumsal</span>
 
           <h2>Vargeloğlu İnşaat Tic. Ltd. Şti.</h2>
-          <p class="company-intro__name">Musa VARGELOĞLU</p>
 
           <p>
             1985 yılından itibaren günümüze kadar devam etmekte olan altyapı, imalat ve montaj,
@@ -23,7 +21,7 @@
           </p>
 
           <div class="company-intro__signature">
-            <strong>Musa VARGELOĞLU</strong>
+            <strong style="color:#524636">Musa VARGELOĞLU</strong>
             <span>Genel Koordinatör</span>
           </div>
         </div>
@@ -53,25 +51,10 @@
   border: 1px solid #e5e7eb;
 }
 
-.company-intro__eyebrow {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #a67c45;
-}
-
 .company-intro__content h2 {
   margin-top: 8px;
   font-size: clamp(1.4rem, 2.4vw, 2rem);
   line-height: 1.15;
-  color: #0f1720;
-}
-
-.company-intro__name {
-  margin-top: 6px;
-  font-weight: 700;
-  color: #5b6570;
 }
 
 .company-intro__content p {
