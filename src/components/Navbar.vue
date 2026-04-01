@@ -2,7 +2,6 @@
   <header class="navbar">
     <div class="container navbar-inner">
       <a href="#top" class="brand" aria-label="Vargeloğlu İnşaat ana sayfa">
-
         <span class="brand-copy">
           <span class="brand-title">Vargeloğlu İnşaat</span>
           <span class="brand-subtitle">HAFRİYAT</span>
@@ -61,23 +60,27 @@ const navItems = [
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(247, 244, 238, 0.92);
+  padding-top: 12px;
+  background: linear-gradient(180deg, rgba(247, 244, 238, 0.96), rgba(247, 244, 238, 0.82));
   backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(15, 23, 32, 0.08);
 }
 
 .navbar-inner {
+  min-height: 74px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 78px;
-  gap: 20px;
+  gap: 16px;
+  padding: 0 16px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(15, 23, 32, 0.08);
+  box-shadow: 0 12px 34px rgba(15, 23, 32, 0.05);
 }
 
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
   min-width: 0;
 }
 
@@ -89,25 +92,25 @@ const navItems = [
 
 .brand-title {
   color: #0f1720;
-  font-size: 1.12rem;
+  font-size: 1.22rem;
   font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
+  line-height: 1;
+  letter-spacing: -0.04em;
 }
 
 .brand-subtitle {
   display: inline-flex;
   align-items: center;
   align-self: flex-start;
-  margin-top: 4px;
-  min-height: 22px;
-  padding: 0 8px;
+  margin-top: 6px;
+  min-height: 24px;
+  padding: 0 9px;
   border-radius: 999px;
   background: rgba(200, 155, 93, 0.14);
   color: #a67c45;
   font-size: 0.64rem;
   font-weight: 800;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
 }
 
@@ -115,6 +118,10 @@ const navItems = [
   display: flex;
   align-items: center;
   gap: 6px;
+  padding: 6px;
+  border-radius: 999px;
+  background: rgba(15, 23, 32, 0.035);
+  border: 1px solid rgba(15, 23, 32, 0.05);
 }
 
 .nav a {
@@ -125,8 +132,8 @@ const navItems = [
   padding: 0 14px;
   border-radius: 999px;
   color: #24303b;
-  font-size: 0.92rem;
-  font-weight: 650;
+  font-size: 0.9rem;
+  font-weight: 700;
   transition:
     background-color 0.2s ease,
     color 0.2s ease,
@@ -134,7 +141,7 @@ const navItems = [
 }
 
 .nav a:hover {
-  background: #ebe4d9;
+  background: #ffffff;
   color: #0f1720;
   transform: translateY(-1px);
 }
@@ -144,7 +151,7 @@ const navItems = [
   width: 44px;
   height: 44px;
   padding: 0;
-  border: 1px solid rgba(15, 23, 32, 0.1);
+  border: 1px solid rgba(15, 23, 32, 0.08);
   border-radius: 14px;
   background: #ffffff;
   align-items: center;
@@ -165,11 +172,7 @@ const navItems = [
   display: none;
 }
 
-@media (max-width: 768px) {
-  .navbar-inner {
-    min-height: 72px;
-  }
-
+@media (max-width: 860px) {
   .desktop-nav {
     display: none;
   }
@@ -182,6 +185,7 @@ const navItems = [
     display: flex;
     flex-direction: column;
     gap: 8px;
+    margin-top: 10px;
     padding: 0 16px 16px;
   }
 
@@ -191,26 +195,11 @@ const navItems = [
     min-height: 46px;
     padding: 0 14px;
     border-radius: 14px;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.88);
     border: 1px solid rgba(15, 23, 32, 0.08);
     color: #24303b;
     font-size: 0.92rem;
     font-weight: 650;
-  }
-
-  .brand-mark {
-    width: 44px;
-    height: 44px;
-    border-radius: 14px;
-  }
-
-  .brand-title {
-    font-size: 1rem;
-  }
-
-  .brand-subtitle {
-    font-size: 0.6rem;
-    letter-spacing: 0.14em;
   }
 }
 </style>
