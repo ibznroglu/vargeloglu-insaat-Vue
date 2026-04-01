@@ -8,10 +8,11 @@
 
       <div id="gallery-grid" class="gallery-grid">
         <a
-          v-for="item in visibleItems"
+          v-for="(item, index) in visibleItems"
           :key="item.id"
           :href="item.src"
           class="gallery-card"
+          :class="{ 'gallery-card--featured': index < 2 && !isMobile }"
           :data-pswp-width="item.width"
           :data-pswp-height="item.height"
           :aria-label="item.alt"
@@ -40,6 +41,7 @@ import { galleryItems } from '../data/gallery'
 
 const previewCount = 12
 const isExpanded = ref(false)
+const isMobile = ref(false)
 
 const visibleItems = computed(() =>
   isExpanded.value ? galleryItems : galleryItems.slice(0, previewCount),
@@ -47,7 +49,14 @@ const visibleItems = computed(() =>
 
 let lightbox: PhotoSwipeLightbox | null = null
 
+function syncViewport() {
+  isMobile.value = window.innerWidth < 768
+}
+
 onMounted(() => {
+  syncViewport()
+  window.addEventListener('resize', syncViewport)
+
   lightbox = new PhotoSwipeLightbox({
     gallery: '#gallery-grid',
     children: 'a',
@@ -58,6 +67,7 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
+  window.removeEventListener('resize', syncViewport)
   lightbox?.destroy()
   lightbox = null
 })
@@ -92,8 +102,10 @@ onBeforeUnmount(() => {
 
 .gallery-card {
   overflow: hidden;
-  border-radius: 14px;
+  border-radius: 16px;
   background: #fff;
+  border: 1px solid rgba(15, 23, 32, 0.06);
+  box-shadow: 0 8px 18px rgba(15, 23, 32, 0.04);
 }
 
 .gallery-card img {
@@ -101,11 +113,20 @@ onBeforeUnmount(() => {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  transition: transform 0.25s ease;
+  transition: transform 0.25s ease, filter 0.25s ease;
 }
 
 .gallery-card:hover img {
   transform: scale(1.03);
+  filter: saturate(1.03);
+}
+
+.gallery-card--featured {
+  grid-column: span 2;
+}
+
+.gallery-card--featured img {
+  aspect-ratio: 16 / 10;
 }
 
 .gallery-toggle {
@@ -124,11 +145,19 @@ onBeforeUnmount(() => {
   .gallery-grid {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .gallery-card--featured {
+    grid-column: span 3;
+  }
 }
 
 @media (max-width: 768px) {
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .gallery-card--featured {
+    grid-column: span 1;
   }
 }
 
