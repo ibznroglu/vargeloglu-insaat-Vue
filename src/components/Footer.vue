@@ -3,13 +3,7 @@
     <div class="footer-top-line"></div>
     <div class="container footer-inner">
       <div class="footer-brand">
-        <div class="footer-logo">
-          <span class="footer-logo-icon">V</span>
-          <div>
-            <span class="footer-brand-name">Vargeloğlu İnşaat</span>
-            <span class="footer-brand-tag">HAFRİYAT & ALTYAPI</span>
-          </div>
-        </div>
+        <img src="../assets/logo.png" alt="Vargeloğlu İnşaat" class="footer-logo-img" />
         <p class="footer-tagline">1985'ten bugüne güvenilir çözüm ortağınız.</p>
       </div>
 
@@ -68,44 +62,17 @@ const navItems = [
   padding: 64px 0 48px;
 }
 
-.footer-logo {
+.footer-brand {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 16px;
+  flex-direction: column;
 }
 
-.footer-logo-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  background: var(--color-gold);
-  color: var(--color-dark);
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.footer-brand-name {
+.footer-logo-img {
+  width: 200px;
+  height: auto;
+  object-fit: contain;
   display: block;
-  font-size: 0.95rem;
-  font-weight: 800;
-  color: var(--color-heading);
-  letter-spacing: -0.01em;
-}
-
-.footer-brand-tag {
-  display: block;
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: var(--color-gold);
-  text-transform: uppercase;
-  margin-top: 2px;
+  margin-bottom: 20px;
 }
 
 .footer-tagline {
@@ -190,10 +157,13 @@ const navItems = [
 
 @media (max-width: 900px) {
   .footer-inner { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+  .footer-logo-img { margin-left: 0; }
 }
 
 @media (max-width: 600px) {
   .footer-inner { grid-template-columns: 1fr; gap: 32px; padding: 40px 0 32px; }
   .footer-bottom-inner { flex-direction: column; text-align: center; }
+  .footer-logo-img { width: 160px; }
 }
 </style>

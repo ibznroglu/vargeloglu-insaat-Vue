@@ -2,12 +2,8 @@
   <header class="navbar" :class="{ 'navbar--scrolled': isScrolled }">
     <div class="container navbar-inner">
       <a href="#top" class="brand" aria-label="Vargeloğlu İnşaat ana sayfa">
-        <span class="brand-icon">V</span>
-        <span class="brand-copy">
-          <span class="brand-title">Vargeloğlu İnşaat</span>
-          <span class="brand-sub">HAFRİYAT & ALTYAPI</span>
-        </span>
-      </a>
+  <img src="../assets/logo.png" alt="Vargeloğlu İnşaat" class="brand-logo" />
+</a>
 
       <nav class="desktop-nav" aria-label="Ana navigasyon">
         <a v-for="item in navItems" :key="item.href" :href="item.href" class="nav-link">
@@ -81,7 +77,7 @@ const navItems = [
   left: 0;
   right: 0;
   z-index: 1000;
-  padding: 20px 0;
+  padding: 14px 0;
   transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
 }
 
@@ -98,49 +94,21 @@ const navItems = [
   gap: 32px;
 }
 
-/* Brand */
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
   flex-shrink: 0;
 }
 
-.brand-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  background: var(--color-gold);
-  color: var(--color-dark);
-  font-family: var(--font-display);
-  font-size: 1.3rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+.brand-logo {
+  width: 220px;
+  height: auto;
+  object-fit: contain;
+  display: block;
 }
 
-.brand-copy {
-  display: flex;
-  flex-direction: column;
-}
-
-.brand-title {
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  line-height: 1.1;
-}
-
-.brand-sub {
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: var(--color-gold);
-  text-transform: uppercase;
-  margin-top: 3px;
+@media (max-width: 900px) {
+  .brand-logo { width: 160px; }
 }
 
 /* Desktop nav */
