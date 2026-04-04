@@ -2,21 +2,29 @@
   <section id="referanslar" class="references">
     <div class="container">
       <div class="references-head">
-        <span>Referanslar</span>
-        <h2>Tamamlanan işlerden seçili referanslar</h2>
+        <p class="kicker reveal">Referanslar</p>
+        <h2 class="references-title reveal reveal-delay-1">Tamamlanan işlerden seçili referanslar</h2>
       </div>
 
       <div class="references-grid">
-        <article v-for="item in references" :key="item.title" class="reference-card">
-          <img :src="item.image" :alt="item.title" class="reference-image" />
-
-          <div class="reference-body">
+        <article
+          v-for="(item, i) in references"
+          :key="item.title"
+          class="ref-card reveal"
+          :class="`reveal-delay-${(i % 3) + 1}`"
+        >
+          <div class="ref-img-wrap">
+            <img :src="item.image" :alt="item.title" class="ref-img" />
+          </div>
+          <div class="ref-body">
+            <span class="ref-period">{{ item.period }}</span>
             <h3>{{ item.title }}</h3>
-            <p class="reference-period">{{ item.period }}</p>
-            <p v-if="item.project">{{ item.project }}</p>
-            <p v-if="item.location">{{ item.location }}</p>
-            <p>{{ item.manager }}</p>
-            <p v-if="item.assistant">{{ item.assistant }}</p>
+            <div class="ref-meta">
+              <p v-if="item.project">{{ item.project }}</p>
+              <p v-if="item.location">{{ item.location }}</p>
+              <p>{{ item.manager }}</p>
+              <p v-if="item.assistant">{{ item.assistant }}</p>
+            </div>
           </div>
         </article>
       </div>
@@ -25,15 +33,12 @@
 </template>
 
 <script setup lang="ts">
-/* reference-companies */
 import alke from '../assets/reference-companies/alke.jpg'
 import baki from '../assets/reference-companies/baki-grup.png'
 import eras from '../assets/reference-companies/eras.jpg'
 import maxx from '../assets/reference-companies/maxx-royal.jpg'
 import kilikya from '../assets/reference-companies/kilikya.jpg'
 import sunwing from '../assets/reference-companies/sunwing.jpg'
-
-/* project-companies (fallback / ortak görseller) */
 import calista from '../assets/project-companies/calista-resort.jpg'
 import ela from '../assets/project-companies/ela-quality-resort.jpg'
 import susesi from '../assets/project-companies/susesi.jpg'
@@ -41,165 +46,129 @@ import carya from '../assets/project-companies/regnum-carya.jpg'
 import zeynep from '../assets/project-companies/zeynep-golf.jpg'
 
 const references = [
-  {
-    title: 'Alke İnşaat',
-    period: '2001-2004',
-    project: 'Dünya Bankası Projesi',
-    manager: 'Proje Müdürü: Enver KARABACAK',
-    image: alke,
-  },
-  {
-    title: 'Baki Grup',
-    period: '1997-1999',
-    project: 'Dünya Bankası Projesi',
-    manager: 'Proje Müdürü: Murat EĞRİ',
-    image: baki,
-  },
-  {
-    title: 'Eras İnşaat',
-    period: '1999-2000',
-    project: 'İller Bankası Projesi',
-    location: 'Kadriye Köyü',
-    manager: 'Proje Müdürü: Ertuğrul BAĞLAN',
-    image: eras,
-  },
-  {
-    title: 'Ela Quality Resort Otel',
-    period: '2006-2007',
-    location: 'Antalya Belek',
-    manager: 'Proje Müdürü: Tolga OZAN',
-    image: ela,
-  },
-  {
-    title: 'Calista Otel',
-    period: '2005-2006',
-    location: 'Antalya Belek',
-    manager: 'Proje Müdürü: Ali ÖGER',
-    image: calista,
-  },
-  {
-    title: 'Susesi Otel',
-    period: '2006-2007',
-    location: 'Antalya Belek',
-    manager: 'Proje Müdürü: Orhan ÖZMEN',
-    image: susesi,
-  },
-  {
-    title: 'Carya Golf Club',
-    period: '2007-2008',
-    project: 'Otel Altyapı Projesi',
-    location: 'Antalya Belek',
-    manager: 'Proje Müdürü: Tolga OZAN',
-    image: carya,
-  },
-  {
-    title: 'Maxx Royal Golf Club (Papillon) Golf Villaları',
-    period: '2010-2011',
-    location: 'Antalya Belek',
-    manager: 'Proje Müdürü: Ömer ÖZTÜRK',
-    image: maxx,
-  },
-  {
-    title: 'Zeynep Golf Resort Otel',
-    period: '2010-2011',
-    location: 'Antalya Belek',
-    manager: 'Proje Müdürü: Hasan Basri UZUN',
-    assistant: 'Gnl. Müd. Yrd: Mehmet KINIK',
-    image: zeynep,
-  },
-  {
-    title: 'Kilikya Palace Hotel',
-    period: '2011-2012',
-    location: 'Antalya Göynük',
-    manager: 'Proje Müdürü: Rıza ÇALIŞKAN',
-    image: kilikya,
-  },
-  {
-    title: 'Sunwing Resort Otel',
-    period: '2011-2012',
-    manager: 'Proje Müdürü: Muharrem ALTUĞ',
-    image: sunwing,
-  },
+  { title: 'Alke İnşaat', period: '2001-2004', project: 'Dünya Bankası Projesi', manager: 'Proje Müdürü: Enver KARABACAK', image: alke },
+  { title: 'Baki Grup', period: '1997-1999', project: 'Dünya Bankası Projesi', manager: 'Proje Müdürü: Murat EĞRİ', image: baki },
+  { title: 'Eras İnşaat', period: '1999-2000', project: 'İller Bankası Projesi', location: 'Kadriye Köyü', manager: 'Proje Müdürü: Ertuğrul BAĞLAN', image: eras },
+  { title: 'Ela Quality Resort Otel', period: '2006-2007', location: 'Antalya Belek', manager: 'Proje Müdürü: Tolga OZAN', image: ela },
+  { title: 'Calista Otel', period: '2005-2006', location: 'Antalya Belek', manager: 'Proje Müdürü: Ali ÖGER', image: calista },
+  { title: 'Susesi Otel', period: '2006-2007', location: 'Antalya Belek', manager: 'Proje Müdürü: Orhan ÖZMEN', image: susesi },
+  { title: 'Carya Golf Club', period: '2007-2008', project: 'Otel Altyapı Projesi', location: 'Antalya Belek', manager: 'Proje Müdürü: Tolga OZAN', image: carya },
+  { title: 'Maxx Royal Golf Club (Papillon) Golf Villaları', period: '2010-2011', location: 'Antalya Belek', manager: 'Proje Müdürü: Ömer ÖZTÜRK', image: maxx },
+  { title: 'Zeynep Golf Resort Otel', period: '2010-2011', location: 'Antalya Belek', manager: 'Proje Müdürü: Hasan Basri UZUN', assistant: 'Gnl. Müd. Yrd: Mehmet KINIK', image: zeynep },
+  { title: 'Kilikya Palace Hotel', period: '2011-2012', location: 'Antalya Göynük', manager: 'Proje Müdürü: Rıza ÇALIŞKAN', image: kilikya },
+  { title: 'Sunwing Resort Otel', period: '2011-2012', manager: 'Proje Müdürü: Muharrem ALTUĞ', image: sunwing },
 ]
 </script>
 
 <style scoped>
 .references {
-  padding: 40px 0;
-  background: #f7f4ee;
+  padding: 100px 0;
+  background: var(--color-dark-2);
+  position: relative;
 }
 
-.references-head span {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #a67c45;
-  text-transform: uppercase;
+.references::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-gold-muted), transparent);
 }
 
-.references-head h2 {
-  margin-top: 8px;
-  font-size: clamp(1.4rem, 2.5vw, 2rem);
-  color: #0f1720;
+.references-head {
+  margin-bottom: 52px;
+}
+
+.references-title {
+  margin-top: 16px;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 800;
+  color: var(--color-heading);
+  letter-spacing: -0.02em;
 }
 
 .references-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 20px;
+  gap: 20px;
 }
 
-.reference-card {
-  background: #fff;
-  border-radius: 12px;
+.ref-card {
+  border-radius: var(--radius-lg);
   overflow: hidden;
-  border: 1px solid #e5e7eb;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: var(--color-dark-3);
+  border: 1px solid var(--color-border);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.reference-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 20px rgba(15, 23, 32, 0.06);
+.ref-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+  border-color: var(--color-border-gold);
 }
 
-.reference-image {
+.ref-img-wrap {
+  overflow: hidden;
+}
+
+.ref-img {
   width: 100%;
-  aspect-ratio: 16/10;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
+  display: block;
+  filter: brightness(0.85);
+  transition: transform 0.5s ease, filter 0.3s ease;
 }
 
-.reference-body {
-  padding: 12px 14px;
+.ref-card:hover .ref-img {
+  transform: scale(1.04);
+  filter: brightness(1);
 }
 
-.reference-body h3 {
-  font-size: 1rem;
-  color: #0f1720;
+.ref-body {
+  padding: 18px 20px 20px;
 }
 
-.reference-body p {
-  margin-top: 4px;
-  font-size: 0.85rem;
-  color: #5b6570;
-}
-
-.reference-period {
-  margin-top: 4px;
-  font-size: 0.85rem;
+.ref-period {
+  display: inline-block;
+  font-size: 0.75rem;
   font-weight: 700;
-  color: #a67c45;
+  letter-spacing: 0.08em;
+  color: var(--color-gold);
+  margin-bottom: 8px;
 }
 
-@media (max-width: 768px) {
-  .references-grid {
-    grid-template-columns: 1fr 1fr;
-  }
+.ref-body h3 {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--color-heading);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.ref-meta {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ref-meta p {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .references-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 480px) {
-  .references-grid {
-    grid-template-columns: 1fr;
-  }
+  .references-grid { grid-template-columns: 1fr; }
+  .references { padding: 72px 0; }
 }
 </style>
