@@ -21,7 +21,6 @@
           </div>
           <div class="project-body">
             <h3>{{ project.title }}</h3>
-            <p>{{ project.period }}</p>
           </div>
         </article>
       </div>
@@ -145,14 +144,6 @@ const projects = [
   font-weight: 700;
   color: var(--color-heading);
   letter-spacing: -0.01em;
-}
-
-.project-body p {
-  margin-top: 6px;
-  font-size: 0.82rem;
-  color: var(--color-gold);
-  font-weight: 600;
-  letter-spacing: 0.04em;
 }
 
 @media (max-width: 900px) {
