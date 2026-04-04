@@ -74,12 +74,15 @@ const projects = [
 }
 
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   gap: 20px;
+  justify-content: center;
 }
 
 .project-card {
+  flex: 0 1 calc(33.333% - 14px);
+  min-width: 280px;
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--color-dark-3);
@@ -147,11 +150,11 @@ const projects = [
 }
 
 @media (max-width: 900px) {
-  .projects-grid { grid-template-columns: 1fr 1fr; }
+  .project-card { flex: 0 1 calc(50% - 10px); }
 }
 
 @media (max-width: 480px) {
-  .projects-grid { grid-template-columns: 1fr; }
+  .project-card { flex: 0 1 100%; }
   .projects { padding: 72px 0; }
 }
 </style>
