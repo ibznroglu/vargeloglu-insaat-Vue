@@ -158,7 +158,6 @@ const navItems = [
 @media (max-width: 900px) {
   .footer-inner { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
-  .footer-logo-img { margin-left: 0; }
 }
 
 @media (max-width: 600px) {
