@@ -1,163 +1,148 @@
 <template>
   <section id="faaliyetlerimiz" class="services">
     <div class="container">
-      <div class="services-shell">
-        <div class="services-head">
-          <span>Faaliyetlerimiz</span>
-          <h2>Altyapı ve saha uygulamalarında kapsamlı hizmet</h2>
-          <p>
-            Farklı ölçeklerde proje ihtiyaçlarına uygun altyapı, hafriyat ve uygulama
-            çözümleri sunuyoruz.
-          </p>
-        </div>
-
-        <div class="services-grid">
-          <div v-for="item in services" :key="item" class="service-item">
-            {{ item }}
-          </div>
-        </div>
-
-        <p class="services-note">
-          İşleriniz itina ile yapılır. Kanalizasyon ve yağmur suyu bacaları için dairesel saç
-          kalıplarımız mevcuttur.
+      <div class="services-head">
+        <p class="kicker reveal">Faaliyetlerimiz</p>
+        <h2 class="services-title reveal reveal-delay-1">
+          Altyapı ve saha uygulamalarında<br />kapsamlı hizmet
+        </h2>
+        <p class="services-desc reveal reveal-delay-2">
+          Farklı ölçeklerde proje ihtiyaçlarına uygun altyapı, hafriyat ve uygulama
+          çözümleri sunuyoruz.
         </p>
       </div>
+
+      <div class="services-grid">
+        <div
+          v-for="(item, i) in services"
+          :key="item"
+          class="service-card reveal"
+          :class="`reveal-delay-${(i % 4) + 1}`"
+        >
+          <div class="service-icon">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M10 2L18 10L10 18L2 10L10 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span>{{ item }}</span>
+        </div>
+      </div>
+
+      <p class="services-note reveal">
+        İşleriniz itina ile yapılır. Kanalizasyon ve yağmur suyu bacaları için dairesel saç kalıplarımız mevcuttur.
+      </p>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
 const services = [
-  'Kanal İşleri',
-  'Yağmur Suyu İşleri',
-  'Drenaj İşleri',
-  'Sulama Kanal Betonu',
-  'Süpürge Beton',
-  'Doğalgaz Hattı',
-  'Çevre Düzenleme',
-  'Hafriyat',
-  'Taşduvar',
-  'Kalıp',
-  'Demir',
-  'Beton',
-  'Duvar',
-  'Sıva',
-  'Alt Yapı',
+  'Kanal İşleri', 'Yağmur Suyu İşleri', 'Drenaj İşleri',
+  'Sulama Kanal Betonu', 'Süpürge Beton', 'Doğalgaz Hattı',
+  'Çevre Düzenleme', 'Hafriyat', 'Taşduvar',
+  'Kalıp', 'Demir', 'Beton',
+  'Duvar', 'Sıva', 'Alt Yapı',
 ]
 </script>
 
 <style scoped>
 .services {
-  padding: 12px 0 40px;
-  background: #f3efe8;
+  padding: 100px 0;
+  background: var(--color-dark);
+  position: relative;
 }
 
-.services-shell {
-  padding: 24px;
-  border-radius: 22px;
-  background:
-    radial-gradient(circle at top right, rgba(200, 155, 93, 0.08), transparent 28%),
-    rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(15, 23, 32, 0.08);
-  box-shadow: 0 14px 36px rgba(15, 23, 32, 0.05);
+.services::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-gold-muted), transparent);
 }
 
 .services-head {
-  max-width: 760px;
+  max-width: 700px;
+  margin-bottom: 56px;
 }
 
-.services-head span {
-  display: inline-flex;
-  align-items: center;
-  min-height: 26px;
-  padding: 0 10px;
-  border-radius: 999px;
-  background: rgba(200, 155, 93, 0.14);
-  color: #a67c45;
-  font-size: 0.72rem;
+.services-title {
+  margin-top: 16px;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
   font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  line-height: 1.15;
+  color: var(--color-heading);
+  letter-spacing: -0.02em;
 }
 
-.services-head h2 {
-  margin-top: 10px;
-  color: #0f1720;
-  font-size: clamp(1.55rem, 2.5vw, 2.2rem);
-  line-height: 1.08;
-  letter-spacing: -0.04em;
-}
-
-.services-head p {
-  margin-top: 10px;
-  max-width: 58ch;
-  color: #5b6570;
-  font-size: 0.96rem;
-  line-height: 1.7;
+.services-desc {
+  margin-top: 16px;
+  font-size: 0.97rem;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+  max-width: 56ch;
 }
 
 .services-grid {
-  margin-top: 20px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
 }
 
-.service-item {
-  padding: 12px 14px;
-  border-radius: 12px;
-  background: #ffffff;
-  border: 1px solid rgba(15, 23, 32, 0.08);
-  color: #24303b;
-  font-size: 0.9rem;
-  font-weight: 600;
-  line-height: 1.4;
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+.service-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: rgba(255,255,255,0.02);
+  color: rgba(255,255,255,0.75);
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+  cursor: default;
 }
 
-.service-item:hover {
-  transform: translateY(-1px);
-  border-color: rgba(200, 155, 93, 0.28);
-  box-shadow: 0 8px 18px rgba(15, 23, 32, 0.04);
+.service-card:hover {
+  border-color: var(--color-border-gold);
+  background: var(--color-gold-muted);
+  color: var(--color-gold-light);
+}
+
+.service-icon {
+  color: var(--color-gold);
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.service-card:hover .service-icon {
+  opacity: 1;
 }
 
 .services-note {
-  margin-top: 16px;
-  color: #5b6570;
-  font-size: 0.86rem;
-  line-height: 1.65;
+  margin-top: 36px;
+  padding: 20px 24px;
+  border-left: 2px solid var(--color-gold);
+  background: rgba(201,168,76,0.06);
+  border-radius: 0 8px 8px 0;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  max-width: 72ch;
+}
+
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
 @media (max-width: 768px) {
-  .services {
-    padding: 8px 0 32px;
-  }
-
-  .services-shell {
-    padding: 18px;
-    border-radius: 18px;
-  }
-
-  .services-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .services-head h2 {
-    font-size: 1.65rem;
-  }
-
-  .services-head p,
-  .services-note {
-    font-size: 0.92rem;
-  }
+  .services { padding: 72px 0; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 480px) {
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
+  .services-grid { grid-template-columns: 1fr 1fr; }
 }
 </style>
