@@ -1,23 +1,17 @@
 <template>
   <header class="navbar" :class="{ 'navbar--scrolled': isScrolled }">
     <div class="container navbar-inner">
-
-      <a href="#top" class="brand">
+      <a href="#top" class="brand" aria-label="Vargeloğlu İnşaat ana sayfa">
         <span class="brand-icon">V</span>
         <span class="brand-copy">
           <span class="brand-title">Vargeloğlu İnşaat</span>
-          <span class="brand-sub">HAFRİYAT - ALTYAPI</span>
+          <span class="brand-sub">HAFRİYAT & ALTYAPI</span>
         </span>
       </a>
 
-      <nav class="desktop-nav">
-        <a
-          v-for="navItem in navItems"
-          :key="navItem.href"
-          :href="navItem.href"
-          class="nav-link"
-        >
-          {{ navItem.label }}
+      <nav class="desktop-nav" aria-label="Ana navigasyon">
+        <a v-for="item in navItems" :key="item.href" :href="item.href" class="nav-link">
+          {{ item.label }}
         </a>
       </nav>
 
@@ -27,65 +21,57 @@
         type="button"
         class="burger"
         :class="{ 'burger--open': isOpen }"
+        :aria-expanded="isOpen"
         @click="isOpen = !isOpen"
+        aria-label="Menü"
       >
         <span></span>
         <span></span>
         <span></span>
       </button>
-
     </div>
 
     <Transition name="mobile-menu">
-      <nav v-if="isOpen" class="mobile-nav">
-        <a
-          v-for="(navItem, idx) in navItems"
-          :key="navItem.href"
-          :href="navItem.href"
-          class="mobile-nav-link"
-          @click="isOpen = false"
-        >
-          <span class="mobile-nav-num">{{ getNum(idx) }}</span>
-          {{ navItem.label }}
-        </a>
-        <a href="#iletisim" class="mobile-nav-cta" @click="isOpen = false">
-          İletişime Geç
-        </a>
-      </nav>
-    </Transition>
+  <nav v-if="isOpen" class="mobile-nav" aria-label="Mobil navigasyon">
+    <a
+      v-for="(item, index) in navItems"
+      :key="item.href"
+      :href="item.href"
+      class="mobile-nav-link"
+      @click="isOpen = false"
+    >
+      <span class="mobile-nav-num">{{ String(index + 1).padStart(2, '0') }}</span>
+      {{ item.label }}
+    </a>
 
+    <a href="#iletisim" class="mobile-nav-cta" @click="isOpen = false">
+      İletişime Geç →
+    </a>
+  </nav>
+</Transition>
   </header>
 </template>
 
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from 'vue'
-
-interface NavItem {
-  label: string
-  href: string
-}
+import { onMounted, onBeforeUnmount, ref } from 'vue'
 
 const isOpen = ref(false)
 const isScrolled = ref(false)
 
-const navItems: NavItem[] = [
+function onScroll() {
+  isScrolled.value = window.scrollY > 60
+}
+
+onMounted(() => window.addEventListener('scroll', onScroll, { passive: true }))
+onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
+
+const navItems = [
   { label: 'Anasayfa', href: '#top' },
   { label: 'Faaliyetler', href: '#faaliyetlerimiz' },
   { label: 'Projeler', href: '#projeler' },
   { label: 'Galeri', href: '#galeri' },
   { label: 'Referanslar', href: '#referanslar' },
 ]
-
-function getNum(idx: number): string {
-  return String(idx + 1).padStart(2, '0')
-}
-
-function onScroll(): void {
-  isScrolled.value = window.scrollY > 60
-}
-
-onMounted(() => window.addEventListener('scroll', onScroll, { passive: true }))
-onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
 </script>
 
 <style scoped>
@@ -112,6 +98,7 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
   gap: 32px;
 }
 
+/* Brand */
 .brand {
   display: flex;
   align-items: center;
@@ -156,6 +143,7 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
   margin-top: 3px;
 }
 
+/* Desktop nav */
 .desktop-nav {
   display: flex;
   align-items: center;
@@ -168,13 +156,13 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
   border-radius: 6px;
   font-size: 0.88rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255,255,255,0.7);
   transition: color 0.2s, background 0.2s;
 }
 
 .nav-link:hover {
   color: #fff;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255,255,255,0.06);
 }
 
 .nav-cta {
@@ -194,6 +182,7 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
   transform: translateY(-1px);
 }
 
+/* Burger */
 .burger {
   display: none;
   flex-direction: column;
@@ -206,7 +195,6 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
   border-radius: 8px;
   background: transparent;
   margin-left: auto;
-  cursor: pointer;
 }
 
 .burger span {
@@ -217,18 +205,11 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.burger--open span:nth-child(1) {
-  transform: translateY(6.5px) rotate(45deg);
-}
+.burger--open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.burger--open span:nth-child(2) { opacity: 0; }
+.burger--open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-.burger--open span:nth-child(2) {
-  opacity: 0;
-}
-
-.burger--open span:nth-child(3) {
-  transform: translateY(-6.5px) rotate(-45deg);
-}
-
+/* Mobile nav */
 .mobile-nav {
   position: absolute;
   top: 100%;
@@ -251,7 +232,7 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
   border-bottom: 1px solid var(--color-border);
   font-size: 1rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(255,255,255,0.8);
 }
 
 .mobile-nav-num {
@@ -272,24 +253,12 @@ onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
 }
 
 .mobile-menu-enter-active,
-.mobile-menu-leave-active {
-  transition: opacity 0.25s ease, transform 0.25s ease;
-}
-
+.mobile-menu-leave-active { transition: opacity 0.25s ease, transform 0.25s ease; }
 .mobile-menu-enter-from,
-.mobile-menu-leave-to {
-  opacity: 0;
-  transform: translateY(-8px);
-}
+.mobile-menu-leave-to { opacity: 0; transform: translateY(-8px); }
 
 @media (max-width: 900px) {
-  .desktop-nav,
-  .nav-cta {
-    display: none;
-  }
-
-  .burger {
-    display: flex;
-  }
+  .desktop-nav, .nav-cta { display: none; }
+  .burger { display: flex; }
 }
 </style>
