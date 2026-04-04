@@ -146,6 +146,11 @@ const references = [
   color: var(--color-heading);
   line-height: 1.35;
   letter-spacing: -0.01em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  overflow: hidden;
 }
 
 .ref-meta {
