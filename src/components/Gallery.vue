@@ -2,9 +2,9 @@
   <section id="galeri" class="gallery">
     <div class="container">
       <div class="gallery-head">
-        <span>Galeri</span>
-        <h2>Uygulamalarımızdan görseller</h2>
-      </div>
+  <p class="kicker reveal">Galeri</p>
+  <h2 class="reveal reveal-delay-1">Uygulamalarımızdan görseller</h2>
+</div>
 
       <div id="gallery-grid" class="gallery-grid">
         <a
@@ -91,25 +91,6 @@ onBeforeUnmount(() => {
 
 .gallery-head {
   margin-bottom: 48px;
-}
-
-.gallery-head span {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-gold);
-}
-
-.gallery-head span::before {
-  content: '';
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--color-gold);
 }
 
 .gallery-head h2 {
