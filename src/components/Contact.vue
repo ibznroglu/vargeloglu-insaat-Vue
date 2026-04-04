@@ -1,106 +1,177 @@
 <template>
   <section id="iletisim" class="contact">
+    <div class="contact-bg-line"></div>
     <div class="container contact-inner">
+
       <div class="contact-content">
-        <span class="contact-eyebrow">İletişim</span>
-        <h2>Projeniz için bizimle iletişime geçin</h2>
-        <p>
+        <p class="kicker reveal">İletişim</p>
+        <h2 class="contact-title reveal reveal-delay-1">
+          Projeniz için<br />bizimle iletişime geçin
+        </h2>
+        <p class="contact-desc reveal reveal-delay-2">
           Hafriyat, altyapı, çevre düzenleme ve inşaat işleriniz için bizimle doğrudan
           iletişime geçebilirsiniz.
         </p>
       </div>
 
-      <div class="contact-card">
-        <p>
-          <strong>Adres</strong>
-          <span>Kadriye Mh. 258 Sk. No:19/1 Serik / ANTALYA</span>
-        </p>
+      <div class="contact-card reveal reveal-delay-2">
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Adres</strong>
+            <span>Kadriye Mh. 258 Sk. No:19/1 Serik / ANTALYA</span>
+          </div>
+        </div>
 
-        <p>
-          <strong>Cep</strong>
-          <a href="tel:+905339674066">0 533 967 40 66</a>
-        </p>
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 8.81a19.79 19.79 0 01-3.07-8.7A2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.91a16 16 0 006.08 6.08l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Cep</strong>
+            <a href="tel:+905339674066">0 533 967 40 66</a>
+          </div>
+        </div>
 
-        <p>
-          <strong>E-posta</strong>
-          <a href="mailto:vargelogluinsaat@hotmail.com">vargelogluinsaat@hotmail.com</a>
-        </p>
+        <div class="contact-item">
+          <div class="contact-item-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+            </svg>
+          </div>
+          <div>
+            <strong>E-posta</strong>
+            <a href="mailto:vargelogluinsaat@hotmail.com">vargelogluinsaat@hotmail.com</a>
+          </div>
+        </div>
       </div>
+
     </div>
   </section>
 </template>
 
 <style scoped>
 .contact {
-  padding: 40px 0 56px;
-  background: #f3efe8;
+  padding: 100px 0 120px;
+  background: var(--color-dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--color-gold-muted), transparent);
+}
+
+.contact-bg-line {
+  position: absolute;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.07), transparent 70%);
+  pointer-events: none;
 }
 
 .contact-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  align-items: start;
+  gap: 72px;
+  align-items: center;
 }
 
-.contact-eyebrow {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #a67c45;
-  text-transform: uppercase;
+.contact-title {
+  margin-top: 16px;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--color-heading);
+  letter-spacing: -0.02em;
 }
 
-.contact-content h2 {
-  margin-top: 8px;
-  font-size: clamp(1.4rem, 2.5vw, 2rem);
-  color: #0f1720;
-}
-
-.contact-content p {
-  margin-top: 12px;
+.contact-desc {
+  margin-top: 20px;
+  font-size: 0.97rem;
+  line-height: 1.8;
+  color: var(--color-text-muted);
   max-width: 48ch;
-  color: #5b6570;
-  line-height: 1.7;
 }
 
 .contact-card {
-  padding: 18px;
-  border-radius: 14px;
-  background: #fff;
-  border: 1px solid #e5e7eb;
+  background: var(--color-dark-2);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  overflow: hidden;
 }
 
-.contact-card p {
-  margin: 0;
-  padding: 12px 0;
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px 28px;
+  transition: background 0.2s;
+}
+
+.contact-item + .contact-item {
+  border-top: 1px solid var(--color-border);
+}
+
+.contact-item:hover {
+  background: rgba(255,255,255,0.02);
+}
+
+.contact-item-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: var(--color-gold-muted);
+  color: var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contact-item div {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
-.contact-card p + p {
-  border-top: 1px solid #eceff2;
+.contact-item strong {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
 }
 
-.contact-card strong {
-  color: #0f1720;
-  font-size: 0.9rem;
+.contact-item span,
+.contact-item a {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.5;
 }
 
-.contact-card span,
-.contact-card a {
-  color: #5b6570;
-  line-height: 1.6;
+.contact-item a:hover {
+  color: var(--color-gold);
 }
 
-.contact-card a:hover {
-  color: #0f1720;
-}
-
-@media (max-width: 768px) {
-  .contact-inner {
-    grid-template-columns: 1fr;
-  }
+@media (max-width: 900px) {
+  .contact-inner { grid-template-columns: 1fr; gap: 48px; }
+  .contact { padding: 72px 0; }
 }
 </style>
