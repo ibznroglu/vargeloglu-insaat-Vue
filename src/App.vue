@@ -9,6 +9,7 @@
     <Contact />
   </MainLayout>
   <WhatsappButton />
+  <ScrollToTop />
 </template>
 
 <script setup lang="ts">
@@ -21,4 +22,5 @@ import Gallery from './components/Gallery.vue'
 import References from './components/References.vue'
 import Contact from './components/Contact.vue'
 import WhatsappButton from './components/WpButton.vue'
+import ScrollToTop from './components/ScrollToTop.vue'
 </script>
