@@ -14,7 +14,7 @@
 .wa-btn {
   position: fixed;
   bottom: 28px;
-  right: 28px;
+  left: 28px;
   z-index: 999;
   display: flex;
   align-items: center;
@@ -46,7 +46,7 @@
 @media (max-width: 768px) {
   .wa-btn {
     bottom: 20px;
-    right: 16px;
+    left: 16px;
     padding: 11px;
     border-radius: 50%;
   }
