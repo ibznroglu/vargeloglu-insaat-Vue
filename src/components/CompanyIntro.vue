@@ -1,147 +1,165 @@
 <template>
-  <section class="company-intro">
-    <div class="container">
-      <div class="company-intro__card">
-        <div class="company-intro__content">
-          <span class="company-intro__label">Kurumsal</span>
+  <section class="intro">
+    <div class="container intro-inner">
 
-          <h2>Vargeloğlu İnşaat Tic. Ltd. Şti.</h2>
-
-          <p>
-            1985 yılından itibaren günümüze kadar devam etmekte olan altyapı, imalat ve montaj,
-            hafriyat ve inşaat işlerimiz halen devam etmektedir.
-          </p>
-
-          <p>
-            Amacımız, siz değerli işverenlerimize en iyi hizmeti vermek ve sizlerin bizim için çok
-            değerli düşüncelerinizin olumlu olması için var gücümüzle çalışmaktır.
-          </p>
-
-          <p>
-            Vargeloğlu İnşaat’ı tercih ettiğiniz için teşekkür eder, saygılarımızı arz ederiz.
-          </p>
-
-          <div class="company-intro__signature">
-            <strong>Musa VARGELOĞLU</strong>
-            <span>Genel Koordinatör</span>
-          </div>
-        </div>
-
-        <div class="company-intro__media">
-          <img src="../assets/company-intro.jpg" alt="İş makineleri" />
+      <div class="intro-media reveal">
+        <img src="../assets/company-intro.jpg" alt="İş makineleri" />
+        <div class="intro-media-badge">
+          <span class="badge-num">1985</span>
+          <span class="badge-label">Kuruluş Yılı</span>
         </div>
       </div>
+
+      <div class="intro-content">
+        <p class="kicker reveal">Kurumsal</p>
+        <h2 class="intro-title reveal reveal-delay-1">Vargeloğlu İnşaat Tic. Ltd. Şti.</h2>
+
+        <p class="intro-text reveal reveal-delay-2">
+          1985 yılından itibaren günümüze kadar devam etmekte olan altyapı, imalat ve montaj,
+          hafriyat ve inşaat işlerimiz halen devam etmektedir.
+        </p>
+        <p class="intro-text reveal reveal-delay-3">
+          Amacımız, siz değerli işverenlerimize en iyi hizmeti vermek ve sizlerin bizim için çok
+          değerli düşüncelerinizin olumlu olması için var gücümüzle çalışmaktır.
+        </p>
+        <p class="intro-text reveal reveal-delay-4">
+          Vargeloğlu İnşaat'ı tercih ettiğiniz için teşekkür eder, saygılarımızı arz ederiz.
+        </p>
+
+        <div class="intro-signature reveal reveal-delay-4">
+          <div class="sig-line"></div>
+          <strong>Musa VARGELOĞLU</strong>
+          <span>Genel Koordinatör</span>
+        </div>
+      </div>
+
     </div>
   </section>
 </template>
 
 <style scoped>
-.company-intro {
-  padding: 20px 0 24px;
-  background: #f7f4ee;
+.intro {
+  padding: 100px 0;
+  background: var(--color-dark-2);
+  position: relative;
+  overflow: hidden;
 }
 
-.company-intro__card {
+.intro::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 40%;
+  height: 100%;
+  background: radial-gradient(ellipse at right center, rgba(201,168,76,0.06), transparent 70%);
+  pointer-events: none;
+}
+
+.intro-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
-  gap: 22px;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
   align-items: center;
-  padding: 24px;
-  border-radius: 22px;
-  background:
-    radial-gradient(circle at top right, rgba(200, 155, 93, 0.08), transparent 28%),
-    rgba(255, 255, 255, 0.78);
-  border: 1px solid rgba(15, 23, 32, 0.08);
-  box-shadow: 0 14px 36px rgba(15, 23, 32, 0.05);
 }
 
-.company-intro__label {
-  display: inline-flex;
+.intro-media {
+  position: relative;
+}
+
+.intro-media img {
+  width: 100%;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 16px;
+  display: block;
+}
+
+.intro-media-badge {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: var(--color-gold);
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  min-height: 26px;
-  padding: 0 10px;
-  border-radius: 999px;
-  background: rgba(200, 155, 93, 0.14);
-  color: #a67c45;
-  font-size: 0.72rem;
+  justify-content: center;
+  box-shadow: 0 8px 32px rgba(201,168,76,0.35);
+}
+
+.badge-num {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
   font-weight: 800;
+  color: var(--color-dark);
+  line-height: 1;
+}
+
+.badge-label {
+  font-size: 0.6rem;
+  font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
+  color: var(--color-dark);
+  margin-top: 3px;
+  opacity: 0.75;
 }
 
-.company-intro__content h2 {
-  margin-top: 10px;
-  color: #0f1720;
-  font-size: clamp(1.55rem, 2.5vw, 2.2rem);
-  line-height: 1.08;
-  letter-spacing: -0.04em;
-}
-
-.company-intro__content p {
-  margin-top: 12px;
-  max-width: 62ch;
-  color: #5b6570;
-  font-size: 0.96rem;
-  line-height: 1.72;
-}
-
-.company-intro__signature {
-  margin-top: 18px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(15, 23, 32, 0.08);
-}
-
-.company-intro__signature strong {
-  display: block;
-  color: #524636;
-  font-size: 0.98rem;
+.intro-title {
+  margin-top: 16px;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
   font-weight: 800;
+  line-height: 1.1;
+  color: var(--color-heading);
+  letter-spacing: -0.02em;
+}
+
+.intro-text {
+  margin-top: 16px;
+  color: var(--color-text-muted);
+  font-size: 0.97rem;
+  line-height: 1.8;
+  max-width: 54ch;
+}
+
+.intro-signature {
+  margin-top: 40px;
+  padding-top: 0;
+}
+
+.sig-line {
+  width: 48px;
+  height: 2px;
+  background: var(--color-gold);
+  margin-bottom: 14px;
+}
+
+.intro-signature strong {
+  display: block;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--color-heading);
   letter-spacing: -0.01em;
 }
 
-.company-intro__signature span {
+.intro-signature span {
   display: block;
   margin-top: 4px;
-  font-size: 0.88rem;
-  color: #5b6570;
+  font-size: 0.85rem;
+  color: var(--color-gold);
+  font-weight: 500;
 }
 
-.company-intro__media {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.company-intro__media img {
-  width: 100%;
-  max-width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 18px;
-  border: 1px solid rgba(15, 23, 32, 0.06);
-}
-
-@media (max-width: 768px) {
-  .company-intro {
-    padding: 12px 0 20px;
-  }
-
-  .company-intro__card {
+@media (max-width: 900px) {
+  .intro-inner {
     grid-template-columns: 1fr;
-    padding: 18px;
-    border-radius: 18px;
+    gap: 48px;
   }
-
-  .company-intro__media {
-    order: -1;
-  }
-
-  .company-intro__content h2 {
-    font-size: 1.65rem;
-  }
-
-  .company-intro__content p {
-    font-size: 0.94rem;
-  }
+  .intro-media img { height: 320px; }
+  .intro-media-badge { width: 90px; height: 90px; right: 12px; bottom: -12px; }
+  .badge-num { font-size: 1.1rem; }
 }
 </style>
