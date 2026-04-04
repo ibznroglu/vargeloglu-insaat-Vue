@@ -61,15 +61,9 @@
         <div class="stat-divider"></div>
         <div class="stat-card">
           <span class="stat-num">11+</span>
-          <span class="stat-label">Prestijli Referans</span>
+          <span class="stat-label">PRESTİJLİ REFERANS</span>
         </div>
       </div>
-    </div>
-
-    <!-- Scroll indicator -->
-    <div class="hero-scroll">
-      <div class="scroll-line"></div>
-      <span>Aşağı Kaydır</span>
     </div>
   </section>
 </template>
@@ -307,38 +301,6 @@ onBeforeUnmount(() => { if (intervalId) window.clearInterval(intervalId) })
   flex-shrink: 0;
 }
 
-/* Scroll indicator */
-.hero-scroll {
-  position: absolute;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-}
-
-.scroll-line {
-  width: 1px;
-  height: 48px;
-  background: linear-gradient(to bottom, var(--color-gold), transparent);
-  animation: scrollPulse 2s ease-in-out infinite;
-}
-
-@keyframes scrollPulse {
-  0%, 100% { opacity: 1; transform: scaleY(1); transform-origin: top; }
-  50% { opacity: 0.4; }
-}
-
-.hero-scroll span {
-  font-size: 0.68rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-}
-
 @media (max-width: 768px) {
   .hero {
     min-height: 100svh;
@@ -353,6 +315,5 @@ onBeforeUnmount(() => { if (intervalId) window.clearInterval(intervalId) })
   .stat-num {
     font-size: 1.6rem;
   }
-  .hero-scroll { display: none; }
 }
 </style>
