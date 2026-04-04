@@ -8,6 +8,7 @@
      <References />
     <Contact />
   </MainLayout>
+  <WhatsappButton />
 </template>
 
 <script setup lang="ts">
@@ -19,4 +20,5 @@ import Projects from './components/Projects.vue'
 import Gallery from './components/Gallery.vue'
 import References from './components/References.vue'
 import Contact from './components/Contact.vue'
+import WhatsappButton from './components/WpButton.vue'
 </script>
