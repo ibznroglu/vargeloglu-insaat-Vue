@@ -44,19 +44,21 @@ import ela from '../assets/reference-companies/ela-quality.png'
 import susesi from '../assets/reference-companies/susesi.png'
 import carya from '../assets/reference-companies/regnum-carya.png'
 import zeynep from '../assets/reference-companies/zeynep-golf.png'
+import caja from '../assets/reference-companies/caja.jpeg'
 
 const references = [
   { title: 'Alke İnşaat', period: '2001-2004', project: 'Dünya Bankası Projesi', manager: 'Proje Müdürü: Enver KARABACAK', image: alke },
   { title: 'Baki Grup', period: '1997-1999', project: 'Dünya Bankası Projesi', manager: 'Proje Müdürü: Murat EĞRİ', image: baki },
-  { title: 'Eras İnşaat', period: '1999-2000', project: 'İller Bankası Projesi', location: 'Kadriye Köyü', manager: 'Proje Müdürü: Ertuğrul BAĞLAN', image: eras },
-  { title: 'Ela Quality Resort Otel', period: '2006-2007', location: 'Antalya Belek', manager: 'Proje Müdürü: Tolga OZAN', image: ela },
-  { title: 'Calista Otel', period: '2005-2006', location: 'Antalya Belek', manager: 'Proje Müdürü: Ali ÖGER', image: calista },
-  { title: 'Susesi Otel', period: '2006-2007', location: 'Antalya Belek', manager: 'Proje Müdürü: Orhan ÖZMEN', image: susesi },
-  { title: 'Carya Golf Club', period: '2007-2008', project: 'Otel Altyapı Projesi', location: 'Antalya Belek', manager: 'Proje Müdürü: Tolga OZAN', image: carya },
-  { title: 'Maxx Royal Golf Club (Papillon) Golf Villaları', period: '2010-2011', location: 'Antalya Belek', manager: 'Proje Müdürü: Ömer ÖZTÜRK', image: maxx },
-  { title: 'Zeynep Golf Resort Otel', period: '2010-2011', location: 'Antalya Belek', manager: 'Proje Müdürü: Hasan Basri UZUN', assistant: 'Gnl. Müd. Yrd: Mehmet KINIK', image: zeynep },
-  { title: 'Kilikya Palace Hotel', period: '2011-2012', location: 'Antalya Göynük', manager: 'Proje Müdürü: Rıza ÇALIŞKAN', image: kilikya },
+  { title: 'Eras İnşaat', period: '1999-2000', project: 'İller Bankası Projesi', location: 'Kadriye, Serik, Antalya', manager: 'Proje Müdürü: Ertuğrul BAĞLAN', image: eras },
+  { title: 'Ela Quality Resort Otel', period: '2006-2007', location: 'Belek, Antalya', manager: 'Proje Müdürü: Tolga OZAN', image: ela },
+  { title: 'Calista Otel', period: '2005-2006', location: 'Belek, Antalya', manager: 'Proje Müdürü: Ali ÖGER', image: calista },
+  { title: 'Susesi Otel', period: '2006-2007', location: 'Belek, Antalya', manager: 'Proje Müdürü: Orhan ÖZMEN', image: susesi },
+  { title: 'Carya Golf Club', period: '2007-2008', project: 'Otel Altyapı Projesi', location: 'Belek, Antalya', manager: 'Proje Müdürü: Tolga OZAN', image: carya },
+  { title: 'Maxx Royal Golf Club (Papillon) Golf Villaları', period: '2010-2011', location: 'Belek, Antalya', manager: 'Proje Müdürü: Ömer ÖZTÜRK', image: maxx },
+  { title: 'Zeynep Golf Resort Otel', period: '2010-2011', location: 'Belek, Antalya', manager: 'Proje Müdürü: Hasan Basri UZUN', assistant: 'Gnl. Müd. Yrd: Mehmet KINIK', image: zeynep },
+  { title: 'Kilikya Palace Hotel', period: '2011-2012', location: 'Göynük, Kemer, Antalya', manager: 'Proje Müdürü: Rıza ÇALIŞKAN', image: kilikya },
   { title: 'Sunwing Resort Otel', period: '2011-2012', manager: 'Proje Müdürü: Muharrem ALTUĞ', image: sunwing },
+  { title: 'Caja by Maxx Royal Resort Otel', location: 'Türkbükü, Bodrum, Muğla', image: caja },
 ]
 </script>
 
