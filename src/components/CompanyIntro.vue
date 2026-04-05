@@ -3,7 +3,7 @@
     <div class="container intro-inner">
 
       <div class="intro-media reveal">
-        <img src="../assets/company-intro.jpg" alt="İş makineleri" />
+        <img src="../assets/company-intro.png" alt="İş makineleri" />
         <div class="intro-media-badge">
           <span class="badge-num">1985</span>
           <span class="badge-label">Kuruluş Yılı</span>
