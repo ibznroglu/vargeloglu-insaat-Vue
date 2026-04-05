@@ -70,11 +70,11 @@
 
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
-import slide01 from '../assets/slider/slide-01.jpg'
-import slide02 from '../assets/slider/slide-02.jpg'
-import slide03 from '../assets/slider/slide-03.jpg'
-import slide04 from '../assets/slider/slide-04.jpg'
-import slide05 from '../assets/slider/slide-05.jpg'
+import slide01 from '../assets/slider/slide1.png'
+import slide02 from '../assets/slider/slide2.png'
+import slide03 from '../assets/slider/slide3.png'
+import slide04 from '../assets/slider/slide4.png'
+import slide05 from '../assets/slider/slide5.png'
 
 const slides = [
   { src: slide04, alt: 'Hafriyat çalışması' },
