@@ -55,7 +55,7 @@
         </div>
         <div class="stat-divider"></div>
         <div class="stat-card">
-          <span class="stat-num">50+</span>
+          <span class="stat-num">20+</span>
           <span class="stat-label">Tamamlanan Proje</span>
         </div>
         <div class="stat-divider"></div>
