@@ -33,17 +33,17 @@
 </template>
 
 <script setup lang="ts">
-import alke from '../assets/reference-companies/alke.jpg'
+import alke from '../assets/reference-companies/alke.png'
 import baki from '../assets/reference-companies/baki-grup.png'
-import eras from '../assets/reference-companies/eras.jpg'
-import maxx from '../assets/reference-companies/maxx-royal.jpg'
-import kilikya from '../assets/reference-companies/kilikya.jpg'
+import eras from '../assets/reference-companies/eras.png'
+import maxx from '../assets/reference-companies/maxx-royal.png'
+import kilikya from '../assets/reference-companies/kilikya.png'
 import sunwing from '../assets/reference-companies/sunwing.jpg'
-import calista from '../assets/project-companies/calista-resort.jpg'
-import ela from '../assets/project-companies/ela-quality-resort.jpg'
-import susesi from '../assets/project-companies/susesi.jpg'
-import carya from '../assets/project-companies/regnum-carya.jpg'
-import zeynep from '../assets/project-companies/zeynep-golf.jpg'
+import calista from '../assets/reference-companies/calista.png'
+import ela from '../assets/reference-companies/ela-quality.png'
+import susesi from '../assets/reference-companies/susesi.png'
+import carya from '../assets/reference-companies/regnum-carya.png'
+import zeynep from '../assets/reference-companies/zeynep-golf.png'
 
 const references = [
   { title: 'Alke İnşaat', period: '2001-2004', project: 'Dünya Bankası Projesi', manager: 'Proje Müdürü: Enver KARABACAK', image: alke },
@@ -114,12 +114,14 @@ const references = [
 }
 
 .ref-img {
+  aspect-ratio: 16/9;
+  object-fit: contain;
+  background: #1a2030;
+  padding: 24px;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+  transition: transform 0.5s, filter 0.3s;
   display: block;
   filter: brightness(0.85);
-  transition: transform 0.5s ease, filter 0.3s ease;
 }
 
 .ref-card:hover .ref-img {
