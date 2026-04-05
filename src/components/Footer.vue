@@ -14,7 +14,7 @@
 
       <div class="footer-contact">
         <span class="footer-links-title">İletişim</span>
-        <p>Kadriye Mh. 258 Sk. No:19/1<br />Serik / ANTALYA</p>
+        <p>Kadriye Mh. 260 Sk. No:17/1<br />Serik / ANTALYA</p>
         <a href="tel:+905339674066">0 533 967 40 66</a>
         <a href="mailto:vargelogluinsaat@hotmail.com">vargelogluinsaat@hotmail.com</a>
       </div>

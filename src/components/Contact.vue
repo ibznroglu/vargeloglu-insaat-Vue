@@ -24,7 +24,7 @@
             </div>
             <div>
               <strong>Adres</strong>
-              <span>Kadriye Mh. 258 Sk. No:19/1 Serik / ANTALYA</span>
+              <span>Kadriye Mh. 260 Sk. No:17/1 Serik / ANTALYA</span>
             </div>
           </div>
 
@@ -55,7 +55,7 @@
 
         <div class="contact-map">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3191.387504777999!2d31.01393437564902!3d36.881077072224095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14c37c760afd2b8b%3A0xfa06586a02cb11cf!2sKadriye%2C%20258%20Sok%2C%2007525%20Serik%2FAntalya!5e0!3m2!1str!2str!4v1775314482940!5m2!1str!2str"
+            src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3191.312210465339!2d31.013537275649202!3d36.88287867222365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzbCsDUyJzU4LjQiTiAzMcKwMDAnNTguMCJF!5e0!3m2!1str!2str!4v1775393895972!5m2!1str!2str"
             width="100%"
             height="100%"
             style="border:0;"
