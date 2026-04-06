@@ -2,9 +2,9 @@
   <section id="galeri" class="gallery">
     <div class="container">
       <div class="gallery-head">
-  <p class="kicker reveal">Galeri</p>
-  <h2 class="reveal reveal-delay-1">Uygulamalarımızdan görseller</h2>
-</div>
+        <p class="kicker reveal">{{ t.gallery.kicker }}</p>
+        <h2 class="reveal reveal-delay-1">{{ t.gallery.title }}</h2>
+      </div>
 
       <div id="gallery-grid" class="gallery-grid">
         <a
@@ -15,9 +15,9 @@
           :class="{ 'gallery-card--featured': index < 2 && !isMobile }"
           :data-pswp-width="item.width"
           :data-pswp-height="item.height"
-          :aria-label="item.alt"
+          :aria-label="`${t.gallery.imgAlt} ${index + 1}`"
         >
-          <img :src="item.src" :alt="item.alt" loading="lazy" decoding="async" />
+          <img :src="item.src" :alt="`${t.gallery.imgAlt} ${index + 1}`" loading="lazy" decoding="async" />
         </a>
       </div>
 
@@ -27,7 +27,7 @@
         class="gallery-toggle"
         @click="isExpanded = !isExpanded"
       >
-        {{ isExpanded ? 'Daha Az Göster' : `Tümünü Göster (${galleryItems.length})` }}
+        {{ isExpanded ? t.gallery.showLess : `${t.gallery.showMore} (${galleryItems.length})` }}
       </button>
     </div>
   </section>
@@ -38,6 +38,9 @@ import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import PhotoSwipeLightbox from 'photoswipe/lightbox'
 import 'photoswipe/style.css'
 import { galleryItems } from '../data/gallery'
+import { useLocale } from '../composables/useLocale'
+
+const { t } = useLocale()
 
 const previewCount = 12
 const isExpanded = ref(false)
