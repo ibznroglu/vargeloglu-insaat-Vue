@@ -29,7 +29,7 @@ export const en = {
     title: 'Vargeloğlu İnşaat Tic. Ltd. Şti.',
     p1: 'Since 1985, we have been continuously carrying out infrastructure, manufacturing, assembly, excavation and construction works.',
     p2: 'Our goal is to provide the best service to our valued clients and to work with full dedication to earn your trust and satisfaction.',
-    p3: 'Thank you for choosing Vargeloğlu İnşaat. We extend our deepest regards.',
+    p3: 'Thank you for choosing Vargeloğlu İnşaat.',
     badgeLabel: 'Founded',
     role: 'General Coordinator',
     imgAlt: 'Construction machinery',

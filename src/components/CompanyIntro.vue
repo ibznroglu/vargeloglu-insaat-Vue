@@ -3,39 +3,36 @@
     <div class="container intro-inner">
 
       <div class="intro-media reveal">
-        <img src="../assets/company-intro.png" alt="İş makineleri" />
+        <img src="../assets/company-intro.png" :alt="t.intro.imgAlt" />
         <div class="intro-media-badge">
           <span class="badge-num">1985</span>
-          <span class="badge-label">Kuruluş Yılı</span>
+          <span class="badge-label">{{ t.intro.badgeLabel }}</span>
         </div>
       </div>
 
       <div class="intro-content">
-        <p class="kicker reveal">Kurumsal</p>
-        <h2 class="intro-title reveal reveal-delay-1">Vargeloğlu İnşaat Tic. Ltd. Şti.</h2>
+        <p class="kicker reveal">{{ t.intro.kicker }}</p>
+        <h2 class="intro-title reveal reveal-delay-1">{{ t.intro.title }}</h2>
 
-        <p class="intro-text reveal reveal-delay-2">
-          1985 yılından itibaren günümüze kadar devam etmekte olan altyapı, imalat ve montaj,
-          hafriyat ve inşaat işlerimiz halen devam etmektedir.
-        </p>
-        <p class="intro-text reveal reveal-delay-3">
-          Amacımız, siz değerli işverenlerimize en iyi hizmeti vermek ve sizlerin bizim için çok
-          değerli düşüncelerinizin olumlu olması için var gücümüzle çalışmaktır.
-        </p>
-        <p class="intro-text reveal reveal-delay-4">
-          Vargeloğlu İnşaat'ı tercih ettiğiniz için teşekkür eder, saygılarımızı arz ederiz.
-        </p>
+        <p class="intro-text reveal reveal-delay-2">{{ t.intro.p1 }}</p>
+        <p class="intro-text reveal reveal-delay-3">{{ t.intro.p2 }}</p>
+        <p class="intro-text reveal reveal-delay-4">{{ t.intro.p3 }}</p>
 
         <div class="intro-signature reveal reveal-delay-4">
           <div class="sig-line"></div>
           <strong>Musa VARGELOĞLU</strong>
-          <span>Genel Koordinatör</span>
+          <span>{{ t.intro.role }}</span>
         </div>
       </div>
 
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { useLocale } from '../composables/useLocale'
+const { t } = useLocale()
+</script>
 
 <style scoped>
 .intro {

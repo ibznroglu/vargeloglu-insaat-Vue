@@ -29,7 +29,7 @@ export const tr = {
     title: 'Vargeloğlu İnşaat Tic. Ltd. Şti.',
     p1: '1985 yılından itibaren günümüze kadar devam etmekte olan altyapı, imalat ve montaj, hafriyat ve inşaat işlerimiz halen devam etmektedir.',
     p2: 'Amacımız, siz değerli işverenlerimize en iyi hizmeti vermek ve sizlerin bizim için çok değerli düşüncelerinizin olumlu olması için var gücümüzle çalışmaktır.',
-    p3: 'Vargeloğlu İnşaat\'ı tercih ettiğiniz için teşekkür eder, saygılarımızı arz ederiz.',
+    p3: 'Vargeloğlu İnşaat\'ı tercih ettiğiniz için teşekkür ederiz.',
     badgeLabel: 'Kuruluş Yılı',
     role: 'Genel Koordinatör',
     imgAlt: 'İş makineleri',
