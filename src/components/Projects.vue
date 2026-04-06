@@ -2,14 +2,14 @@
   <section id="projeler" class="projects">
     <div class="container">
       <div class="projects-head">
-        <p class="kicker reveal">Projeler</p>
-        <h2 class="projects-title reveal reveal-delay-1">Tamamlanan seçili projeler</h2>
+        <p class="kicker reveal">{{ t.projects.kicker }}</p>
+        <h2 class="projects-title reveal reveal-delay-1">{{ t.projects.title }}</h2>
       </div>
 
       <div class="projects-grid">
         <article
           v-for="(project, i) in projects"
-          :key="project.title"
+          :key="i"
           class="project-card reveal"
           :class="`reveal-delay-${(i % 3) + 1}`"
         >
@@ -29,11 +29,14 @@
 </template>
 
 <script setup lang="ts">
+import { useLocale } from '../composables/useLocale'
 import calista from '../assets/project-companies/calista-resort.jpg'
 import ela from '../assets/project-companies/ela-quality-resort.jpg'
 import susesi from '../assets/project-companies/susesi.jpg'
 import carya from '../assets/project-companies/regnum-carya.jpg'
 import zeynep from '../assets/project-companies/zeynep-golf.jpg'
+
+const { t } = useLocale()
 
 const projects = [
   { title: 'Calista Otel', period: '2005-2006', image: calista },
