@@ -2,14 +2,14 @@
   <section id="referanslar" class="references">
     <div class="container">
       <div class="references-head">
-        <p class="kicker reveal">Referanslar</p>
-        <h2 class="references-title reveal reveal-delay-1">Tamamlanan işlerden seçili referanslar</h2>
+        <p class="kicker reveal">{{ t.references.kicker }}</p>
+        <h2 class="references-title reveal reveal-delay-1">{{ t.references.title }}</h2>
       </div>
 
       <div class="references-grid">
         <article
           v-for="(item, i) in references"
-          :key="item.title"
+          :key="i"
           class="ref-card reveal"
           :class="`reveal-delay-${(i % 3) + 1}`"
         >
@@ -20,10 +20,10 @@
             <span class="ref-period">{{ item.period }}</span>
             <h3>{{ item.title }}</h3>
             <div class="ref-meta">
-              <p v-if="item.project">{{ item.project }}</p>
+              <p v-if="item.project">{{ t.references[item.project] }}</p>
               <p v-if="item.location">{{ item.location }}</p>
-              <p>{{ item.manager }}</p>
-              <p v-if="item.assistant">{{ item.assistant }}</p>
+              <p v-if="item.manager">{{ t.references.projectManager }}: {{ item.manager }}</p>
+              <p v-if="item.assistant">{{ t.references.generalManagerAss }}: {{ item.assistant }}</p>
             </div>
           </div>
         </article>
@@ -33,6 +33,7 @@
 </template>
 
 <script setup lang="ts">
+import { useLocale } from '../composables/useLocale'
 import alke from '../assets/reference-companies/alke.png'
 import baki from '../assets/reference-companies/baki-grup.png'
 import eras from '../assets/reference-companies/eras.png'
@@ -46,18 +47,30 @@ import carya from '../assets/reference-companies/regnum-carya.png'
 import zeynep from '../assets/reference-companies/zeynep-golf.png'
 import caja from '../assets/reference-companies/caja.jpeg'
 
-const references = [
-  { title: 'Alke İnşaat', period: '2001-2004', project: 'Dünya Bankası Projesi', manager: 'Proje Müdürü: Enver KARABACAK', image: alke },
-  { title: 'Baki Grup', period: '1997-1999', project: 'Dünya Bankası Projesi', manager: 'Proje Müdürü: Murat EĞRİ', image: baki },
-  { title: 'Eras İnşaat', period: '1999-2000', project: 'İller Bankası Projesi', location: 'Kadriye, Serik, Antalya', manager: 'Proje Müdürü: Ertuğrul BAĞLAN', image: eras },
-  { title: 'Ela Quality Resort Otel', period: '2006-2007', location: 'Belek, Antalya', manager: 'Proje Müdürü: Tolga OZAN', image: ela },
-  { title: 'Calista Otel', period: '2005-2006', location: 'Belek, Antalya', manager: 'Proje Müdürü: Ali ÖGER', image: calista },
-  { title: 'Susesi Otel', period: '2006-2007', location: 'Belek, Antalya', manager: 'Proje Müdürü: Orhan ÖZMEN', image: susesi },
-  { title: 'Carya Golf Club', period: '2007-2008', project: 'Otel Altyapı Projesi', location: 'Belek, Antalya', manager: 'Proje Müdürü: Tolga OZAN', image: carya },
-  { title: 'Maxx Royal Golf Club (Papillon) Golf Villaları', period: '2010-2011', location: 'Belek, Antalya', manager: 'Proje Müdürü: Ömer ÖZTÜRK', image: maxx },
-  { title: 'Zeynep Golf Resort Otel', period: '2010-2011', location: 'Belek, Antalya', manager: 'Proje Müdürü: Hasan Basri UZUN', assistant: 'Gnl. Müd. Yrd: Mehmet KINIK', image: zeynep },
-  { title: 'Kilikya Palace Hotel', period: '2011-2012', location: 'Göynük, Kemer, Antalya', manager: 'Proje Müdürü: Rıza ÇALIŞKAN', image: kilikya },
-  { title: 'Sunwing Resort Otel', period: '2011-2012', manager: 'Proje Müdürü: Muharrem ALTUĞ', image: sunwing },
+const { t } = useLocale()
+
+type ProjectKey = 'worldBank' | 'illBank' | 'hotelInfra'
+
+const references: {
+  title: string
+  period?: string
+  project?: ProjectKey
+  location?: string
+  manager?: string
+  assistant?: string
+  image: string
+}[] = [
+  { title: 'Alke İnşaat', period: '2001-2004', project: 'worldBank', manager: 'Enver KARABACAK', image: alke },
+  { title: 'Baki Grup', period: '1997-1999', project: 'worldBank', manager: 'Murat EĞRİ', image: baki },
+  { title: 'Eras İnşaat', period: '1999-2000', project: 'illBank', location: 'Kadriye, Serik, Antalya', manager: 'Ertuğrul BAĞLAN', image: eras },
+  { title: 'Ela Quality Resort Otel', period: '2006-2007', location: 'Belek, Antalya', manager: 'Tolga OZAN', image: ela },
+  { title: 'Calista Otel', period: '2005-2006', location: 'Belek, Antalya', manager: 'Ali ÖGER', image: calista },
+  { title: 'Susesi Otel', period: '2006-2007', location: 'Belek, Antalya', manager: 'Orhan ÖZMEN', image: susesi },
+  { title: 'Carya Golf Club', period: '2007-2008', project: 'hotelInfra', location: 'Belek, Antalya', manager: 'Tolga OZAN', image: carya },
+  { title: 'Maxx Royal Golf Club (Papillon) Golf Villaları', period: '2010-2011', location: 'Belek, Antalya', manager: 'Ömer ÖZTÜRK', image: maxx },
+  { title: 'Zeynep Golf Resort Otel', period: '2010-2011', location: 'Belek, Antalya', manager: 'Hasan Basri UZUN', assistant: 'Mehmet KINIK', image: zeynep },
+  { title: 'Kilikya Palace Hotel', period: '2011-2012', location: 'Göynük, Kemer, Antalya', manager: 'Rıza ÇALIŞKAN', image: kilikya },
+  { title: 'Sunwing Resort Otel', period: '2011-2012', manager: 'Muharrem ALTUĞ', image: sunwing },
   { title: 'Caja by Maxx Royal Resort Otel', location: 'Türkbükü, Bodrum, Muğla', image: caja },
 ]
 </script>
