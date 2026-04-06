@@ -165,8 +165,42 @@ const navLinks = [
 }
 
 @media (max-width: 600px) {
-  .footer-inner { grid-template-columns: 1fr; gap: 32px; padding: 40px 0 32px; }
-  .footer-bottom-inner { flex-direction: column; text-align: center; }
-  .footer-logo-img { width: 160px; }
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 32px 0 24px;
+  }
+  .footer-brand {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+  }
+  .footer-logo-img {
+    width: 90px;
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+  .footer-tagline {
+    font-size: 0.82rem;
+  }
+  .footer-links {
+    gap: 6px;
+  }
+  .footer-links a {
+    font-size: 0.82rem;
+  }
+  .footer-contact {
+    gap: 6px;
+  }
+  .footer-contact p,
+  .footer-contact a {
+    font-size: 0.82rem;
+  }
+  .footer-bottom-inner {
+    flex-direction: column;
+    text-align: center;
+    gap: 6px;
+  }
 }
 </style>
