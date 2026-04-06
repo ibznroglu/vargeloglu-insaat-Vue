@@ -1,40 +1,33 @@
 <template>
   <section id="top" class="hero">
-    <!-- Slider arkaplan -->
     <div class="hero-bg">
       <transition name="slide-fade">
         <img
           :key="currentIndex"
           :src="slides[currentIndex].src"
-          :alt="slides[currentIndex].alt"
+          :alt="`slide-${currentIndex}`"
           class="hero-bg-img"
         />
       </transition>
       <div class="hero-overlay"></div>
     </div>
 
-    <!-- İçerik -->
     <div class="container hero-inner">
       <div class="hero-content">
-        <p class="kicker">1985'ten bugüne güvenilir uygulama</p>
+        <p class="kicker">{{ t.hero.kicker }}</p>
 
         <h1 class="hero-title">
-          Hafriyat ve altyapı<br />
-          işlerinde güvenilir<br />
-          <em>çözüm ortağınız</em>
+          <span>{{ t.hero.title1 }}</span>
+          <em>{{ t.hero.titleEm }}</em>
         </h1>
 
-        <p class="hero-desc">
-          Vargeloğlu İnşaat olarak altyapı, hafriyat ve çevre düzenleme işlerinde
-          planlı, temiz ve zamanında teslim odaklı çalışıyoruz.
-        </p>
+        <p class="hero-desc">{{ t.hero.desc }}</p>
 
         <div class="hero-actions">
-          <a href="#projeler" class="btn-gold">Projeleri Gör →</a>
-          <a href="#iletisim" class="btn-ghost">İletişim</a>
+          <a href="#projeler" class="btn-gold">{{ t.hero.btnProjects }}</a>
+          <a href="#iletisim" class="btn-ghost">{{ t.hero.btnContact }}</a>
         </div>
 
-        <!-- Slider dots -->
         <div class="hero-dots">
           <button
             v-for="(_, i) in slides"
@@ -47,21 +40,20 @@
         </div>
       </div>
 
-      <!-- İstatistikler -->
       <div class="hero-stats">
         <div class="stat-card">
           <span class="stat-num">40+</span>
-          <span class="stat-label">Yıllık Tecrübe</span>
+          <span class="stat-label">{{ t.hero.stat1Label }}</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-card">
           <span class="stat-num">20+</span>
-          <span class="stat-label">Tamamlanan Proje</span>
+          <span class="stat-label">{{ t.hero.stat2Label }}</span>
         </div>
         <div class="stat-divider"></div>
         <div class="stat-card">
           <span class="stat-num">11+</span>
-          <span class="stat-label">PRESTİJLİ REFERANS</span>
+          <span class="stat-label">{{ t.hero.stat3Label }}</span>
         </div>
       </div>
     </div>
@@ -70,18 +62,21 @@
 
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { useLocale } from '../composables/useLocale'
 import slide01 from '../assets/slider/slide1.png'
 import slide02 from '../assets/slider/slide2.png'
 import slide03 from '../assets/slider/slide3.png'
 import slide04 from '../assets/slider/slide4.png'
 import slide05 from '../assets/slider/slide5.png'
 
+const { t } = useLocale()
+
 const slides = [
-  { src: slide04, alt: 'Hafriyat çalışması' },
-  { src: slide01, alt: 'Peyzaj ve çevre düzenleme çalışması' },
-  { src: slide02, alt: 'Yapı çevresi uygulama alanı' },
-  { src: slide03, alt: 'Modern proje çevre düzenleme görünümü' },
-  { src: slide05, alt: 'Gölet çevresi uygulama alanı' },
+  { src: slide04 },
+  { src: slide01 },
+  { src: slide02 },
+  { src: slide03 },
+  { src: slide05 },
 ]
 
 const currentIndex = ref(0)
@@ -115,7 +110,6 @@ onBeforeUnmount(() => { if (intervalId) window.clearInterval(intervalId) })
   background: var(--color-dark);
 }
 
-/* Background slider */
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -141,13 +135,11 @@ onBeforeUnmount(() => { if (intervalId) window.clearInterval(intervalId) })
   );
 }
 
-/* Slide transition */
-.slide-fade-enter-active { transition: opacity 1.2s ease; }
+.slide-fade-enter-active,
 .slide-fade-leave-active { transition: opacity 1.2s ease; }
-.slide-fade-enter-from { opacity: 0; }
+.slide-fade-enter-from,
 .slide-fade-leave-to { opacity: 0; }
 
-/* Inner layout */
 .hero-inner {
   position: relative;
   z-index: 2;
@@ -158,7 +150,6 @@ onBeforeUnmount(() => { if (intervalId) window.clearInterval(intervalId) })
   padding-top: 80px;
 }
 
-/* Content */
 .hero-content {
   max-width: 680px;
 }
@@ -166,14 +157,22 @@ onBeforeUnmount(() => { if (intervalId) window.clearInterval(intervalId) })
 .hero-title {
   margin-top: 20px;
   font-family: var(--font-display);
-  font-size: clamp(2.6rem, 5.5vw, 5rem);
+  font-size: clamp(2.2rem, 4vw, 4rem);
   font-weight: 800;
-  line-height: 1.05;
+  line-height: 1.1;
   color: #fff;
   letter-spacing: -0.02em;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.hero-title span {
+  display: block;
 }
 
 .hero-title em {
+  display: block;
   font-style: italic;
   color: var(--color-gold);
 }
@@ -229,7 +228,6 @@ onBeforeUnmount(() => { if (intervalId) window.clearInterval(intervalId) })
   color: #fff;
 }
 
-/* Dots */
 .hero-dots {
   display: flex;
   gap: 8px;
@@ -252,11 +250,9 @@ onBeforeUnmount(() => { if (intervalId) window.clearInterval(intervalId) })
   width: 48px;
 }
 
-/* Stats bar */
 .hero-stats {
   display: flex;
   align-items: center;
-  gap: 0;
   background: rgba(255,255,255,0.05);
   backdrop-filter: blur(12px);
   border: 1px solid var(--color-border);
@@ -272,9 +268,7 @@ onBeforeUnmount(() => { if (intervalId) window.clearInterval(intervalId) })
   text-align: center;
 }
 
-.stat-card:first-child {
-  padding-left: 0;
-}
+.stat-card:first-child { padding-left: 0; }
 
 .stat-num {
   font-family: var(--font-display);
@@ -302,18 +296,9 @@ onBeforeUnmount(() => { if (intervalId) window.clearInterval(intervalId) })
 }
 
 @media (max-width: 768px) {
-  .hero {
-    min-height: 100svh;
-  }
-  .hero-stats {
-    padding: 16px 20px;
-    gap: 0;
-  }
-  .stat-card {
-    padding: 0 16px;
-  }
-  .stat-num {
-    font-size: 1.6rem;
-  }
+  .hero { min-height: 100svh; }
+  .hero-stats { padding: 16px 20px; }
+  .stat-card { padding: 0 16px; }
+  .stat-num { font-size: 1.6rem; }
 }
 </style>
