@@ -3,7 +3,7 @@
     <button
       v-if="isVisible"
       class="scroll-top-btn"
-      aria-label="Sayfanın en üstüne git"
+      :aria-label="t.scrollTop.ariaLabel"
       @click="scrollToTop"
     >
       <svg
@@ -24,7 +24,9 @@
 
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted } from 'vue'
+import { useLocale } from '../composables/useLocale'
 
+const { t } = useLocale()
 const isVisible = ref(false)
 
 function onScroll() {
