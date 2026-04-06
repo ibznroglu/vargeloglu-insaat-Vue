@@ -2,20 +2,15 @@
   <section id="faaliyetlerimiz" class="services">
     <div class="container">
       <div class="services-head">
-        <p class="kicker reveal">Faaliyetlerimiz</p>
-        <h2 class="services-title reveal reveal-delay-1">
-          Altyapı ve saha uygulamalarında<br />kapsamlı hizmet
-        </h2>
-        <p class="services-desc reveal reveal-delay-2">
-          Farklı ölçeklerde proje ihtiyaçlarına uygun altyapı, hafriyat ve uygulama
-          çözümleri sunuyoruz.
-        </p>
+        <p class="kicker reveal">{{ t.services.kicker }}</p>
+        <h2 class="services-title reveal reveal-delay-1">{{ t.services.title }}</h2>
+        <p class="services-desc reveal reveal-delay-2">{{ t.services.desc }}</p>
       </div>
 
       <div class="services-grid">
         <div
-          v-for="(item, i) in services"
-          :key="item"
+          v-for="(item, i) in t.services.items"
+          :key="i"
           class="service-card reveal"
           :class="`reveal-delay-${(i % 4) + 1}`"
         >
@@ -28,21 +23,14 @@
         </div>
       </div>
 
-      <p class="services-note reveal">
-        İşleriniz itina ile yapılır. Kanalizasyon ve yağmur suyu bacaları için dairesel saç kalıplarımız mevcuttur.
-      </p>
+      <p class="services-note reveal">{{ t.services.note }}</p>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-const services = [
-  'Kanal İşleri', 'Yağmur Suyu İşleri', 'Drenaj İşleri',
-  'Sulama Kanal Betonu', 'Süpürge Beton', 'Doğalgaz Hattı',
-  'Çevre Düzenleme', 'Hafriyat', 'Taşduvar',
-  'Kalıp', 'Demir', 'Beton',
-  'Duvar', 'Sıva', 'Alt Yapı',
-]
+import { useLocale } from '../composables/useLocale'
+const { t } = useLocale()
 </script>
 
 <style scoped>
