@@ -2,16 +2,21 @@
   <header class="navbar" :class="{ 'navbar--scrolled': isScrolled }">
     <div class="container navbar-inner">
       <a href="#top" class="brand" aria-label="Vargeloğlu İnşaat ana sayfa">
-  <img src="../assets/logo.png" alt="Vargeloğlu İnşaat" class="brand-logo" />
-</a>
+        <img src="../assets/logo.png" alt="Vargeloğlu İnşaat" class="brand-logo" />
+      </a>
 
-      <nav class="desktop-nav" aria-label="Ana navigasyon">
-        <a v-for="item in navItems" :key="item.href" :href="item.href" class="nav-link">
-          {{ item.label }}
+      <nav class="desktop-nav" :aria-label="t.nav.home">
+        <a v-for="item in navLinks" :key="item.href" :href="item.href" class="nav-link">
+          {{ t.nav[item.key] }}
         </a>
       </nav>
 
-      <a href="#iletisim" class="nav-cta">İletişime Geç</a>
+      <a href="#iletisim" class="nav-cta">{{ t.nav.cta }}</a>
+
+      <button class="lang-toggle" @click="toggleLocale" :aria-label="`Switch to ${current === 'tr' ? 'English' : 'Türkçe'}`">
+        <span :class="{ active: current === 'tr' }">TR</span>
+        <span :class="{ active: current === 'en' }">EN</span>
+      </button>
 
       <button
         type="button"
@@ -28,28 +33,31 @@
     </div>
 
     <Transition name="mobile-menu">
-  <nav v-if="isOpen" class="mobile-nav" aria-label="Mobil navigasyon">
-    <a
-      v-for="(item, index) in navItems"
-      :key="item.href"
-      :href="item.href"
-      class="mobile-nav-link"
-      @click="isOpen = false"
-    >
-      <span class="mobile-nav-num">{{ String(index + 1).padStart(2, '0') }}</span>
-      {{ item.label }}
-    </a>
+      <nav v-if="isOpen" class="mobile-nav" aria-label="Mobil navigasyon">
+        <a
+          v-for="(item, index) in navLinks"
+          :key="item.href"
+          :href="item.href"
+          class="mobile-nav-link"
+          @click="isOpen = false"
+        >
+          <span class="mobile-nav-num">{{ String(index + 1).padStart(2, '0') }}</span>
+          {{ t.nav[item.key] }}
+        </a>
 
-    <a href="#iletisim" class="mobile-nav-cta" @click="isOpen = false">
-      İletişime Geç →
-    </a>
-  </nav>
-</Transition>
+        <a href="#iletisim" class="mobile-nav-cta" @click="isOpen = false">
+          {{ t.nav.cta }} →
+        </a>
+      </nav>
+    </Transition>
   </header>
 </template>
 
 <script setup lang="ts">
 import { onMounted, onBeforeUnmount, ref } from 'vue'
+import { useLocale } from '../composables/useLocale'
+
+const { t, current, toggleLocale } = useLocale()
 
 const isOpen = ref(false)
 const isScrolled = ref(false)
@@ -61,24 +69,22 @@ function onScroll() {
 onMounted(() => window.addEventListener('scroll', onScroll, { passive: true }))
 onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
 
-const navItems = [
-  { label: 'Anasayfa', href: '#top' },
-  { label: 'Faaliyetler', href: '#faaliyetlerimiz' },
-  { label: 'Projeler', href: '#projeler' },
-  { label: 'Galeri', href: '#galeri' },
-  { label: 'Referanslar', href: '#referanslar' },
+const navLinks = [
+  { key: 'home' as const, href: '#top' },
+  { key: 'services' as const, href: '#faaliyetlerimiz' },
+  { key: 'projects' as const, href: '#projeler' },
+  { key: 'gallery' as const, href: '#galeri' },
+  { key: 'references' as const, href: '#referanslar' },
 ]
 </script>
 
 <style scoped>
 .navbar {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 1000;
   padding: 14px 0;
-  transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+  transition: background 0.4s, padding 0.4s, box-shadow 0.4s;
 }
 
 .navbar--scrolled {
@@ -91,14 +97,10 @@ const navItems = [
 .navbar-inner {
   display: flex;
   align-items: center;
-  gap: 32px;
+  gap: 16px;
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-}
+.brand { display: flex; align-items: center; flex-shrink: 0; }
 
 .brand-logo {
   width: 220px;
@@ -111,7 +113,6 @@ const navItems = [
   .brand-logo { width: 160px; }
 }
 
-/* Desktop nav */
 .desktop-nav {
   display: flex;
   align-items: center;
@@ -150,7 +151,38 @@ const navItems = [
   transform: translateY(-1px);
 }
 
-/* Burger */
+.lang-toggle {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border: 1.5px solid var(--color-gold);
+  border-radius: 8px;
+  background: #0a0d12;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.lang-toggle span {
+  padding: 5px 10px;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.45);
+  border-radius: 5px;
+  transition: background 0.2s, color 0.2s;
+  line-height: 1;
+}
+
+.lang-toggle span.active {
+  background: var(--color-gold);
+  color: #0a0d12;
+}
+
+.lang-toggle:hover span:not(.active) {
+  color: rgba(255, 255, 255, 0.8);
+}
+
 .burger {
   display: none;
   flex-direction: column;
@@ -162,7 +194,7 @@ const navItems = [
   border: 1px solid var(--color-border);
   border-radius: 8px;
   background: transparent;
-  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .burger span {
@@ -170,19 +202,16 @@ const navItems = [
   height: 1.5px;
   background: #fff;
   border-radius: 2px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+  transition: transform 0.3s, opacity 0.3s;
 }
 
 .burger--open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
 .burger--open span:nth-child(2) { opacity: 0; }
 .burger--open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-/* Mobile nav */
 .mobile-nav {
   position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
+  top: 100%; left: 0; right: 0;
   background: rgba(10, 13, 18, 0.98);
   backdrop-filter: blur(20px);
   border-top: 1px solid var(--color-border);
@@ -221,12 +250,28 @@ const navItems = [
 }
 
 .mobile-menu-enter-active,
-.mobile-menu-leave-active { transition: opacity 0.25s ease, transform 0.25s ease; }
+.mobile-menu-leave-active { transition: opacity 0.25s, transform 0.25s; }
 .mobile-menu-enter-from,
 .mobile-menu-leave-to { opacity: 0; transform: translateY(-8px); }
 
 @media (max-width: 900px) {
   .desktop-nav, .nav-cta { display: none; }
   .burger { display: flex; }
+  .lang-toggle {
+    margin-left: auto;
+    padding: 1px;
+    border-radius: 5px;
+    border-width: 1px;
+    width: fit-content;
+  }
+  .lang-toggle span {
+    padding: 2px 4px;
+    font-size: 0.62rem;
+    border-radius: 3px;
+    letter-spacing: 0.05em;
+  }
+  .navbar-inner {
+    gap: 8px;
+  }
 }
 </style>
