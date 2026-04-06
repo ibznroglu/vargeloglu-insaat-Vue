@@ -259,6 +259,8 @@ onBeforeUnmount(() => { if (intervalId) window.clearInterval(intervalId) })
   border-radius: 12px;
   padding: 20px 32px;
   width: fit-content;
+  max-width: 100%;
+  overflow-x: auto;
 }
 
 .stat-card {
@@ -285,7 +287,9 @@ onBeforeUnmount(() => { if (intervalId) window.clearInterval(intervalId) })
   letter-spacing: 0.04em;
   color: rgba(255,255,255,0.5);
   text-transform: uppercase;
-  white-space: nowrap;
+  white-space: normal;
+  text-align: center;
+  max-width: 80px;
 }
 
 .stat-divider {
@@ -297,8 +301,23 @@ onBeforeUnmount(() => { if (intervalId) window.clearInterval(intervalId) })
 
 @media (max-width: 768px) {
   .hero { min-height: 100svh; }
-  .hero-stats { padding: 16px 20px; }
-  .stat-card { padding: 0 16px; }
-  .stat-num { font-size: 1.6rem; }
+  .hero-stats {
+    padding: 12px 16px;
+    width: 100%;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+  .stat-card {
+    padding: 0;
+    flex: 1;
+    align-items: center;
+  }
+  .stat-num { font-size: 1.3rem; }
+  .stat-label {
+    font-size: 0.58rem;
+    letter-spacing: 0;
+    max-width: 60px;
+  }
+  .stat-divider { height: 24px; }
 }
 </style>
