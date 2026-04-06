@@ -4,27 +4,27 @@
     <div class="container footer-inner">
       <div class="footer-brand">
         <img src="../assets/logo.png" alt="Vargeloğlu İnşaat" class="footer-logo-img" />
-        <p class="footer-tagline">1985'ten bugüne güvenilir çözüm ortağınız.</p>
+        <p class="footer-tagline">{{ t.footer.tagline }}</p>
       </div>
 
       <div class="footer-links">
-        <span class="footer-links-title">Bağlantılar</span>
-        <a v-for="item in navItems" :key="item.href" :href="item.href">{{ item.label }}</a>
+        <span class="footer-links-title">{{ t.footer.links }}</span>
+        <a v-for="item in navLinks" :key="item.href" :href="item.href">{{ t.nav[item.key] }}</a>
       </div>
 
       <div class="footer-contact">
-        <span class="footer-links-title">İletişim</span>
-        <p>Kadriye Mh. 260 Sk. No:17/1<br />Serik / ANTALYA</p>
-        <a href="tel:+905339674066">0 533 967 40 66</a>
+        <span class="footer-links-title">{{ t.footer.contactTitle }}</span>
+        <p>{{ t.footer.address1 }}<br />{{ t.footer.address2 }}</p>
+        <a href="tel:+905339674066">+90 533 967 40 66</a>
         <a href="mailto:vargelogluinsaat@hotmail.com">vargelogluinsaat@hotmail.com</a>
       </div>
     </div>
 
     <div class="footer-bottom">
       <div class="container footer-bottom-inner">
-        <p>© {{ year }} Vargeloğlu İnşaat. Tüm hakları saklıdır.</p>
+        <p>© {{ year }} Vargeloğlu İnşaat. {{ t.footer.rights }}</p>
         <p>
-          Tasarım & Geliştirme:
+          {{ t.footer.devLabel }}
           <a href="https://isabezeniroglu.vercel.app/" target="_blank" rel="noopener">İsa Bezeniroğlu</a>
         </p>
       </div>
@@ -33,14 +33,18 @@
 </template>
 
 <script setup lang="ts">
+import { useLocale } from '../composables/useLocale'
+
+const { t } = useLocale()
 const year = new Date().getFullYear()
-const navItems = [
-  { label: 'Anasayfa', href: '#top' },
-  { label: 'Faaliyetlerimiz', href: '#faaliyetlerimiz' },
-  { label: 'Projeler', href: '#projeler' },
-  { label: 'Galeri', href: '#galeri' },
-  { label: 'Referanslar', href: '#referanslar' },
-  { label: 'İletişim', href: '#iletisim' },
+
+const navLinks = [
+  { key: 'home' as const, href: '#top' },
+  { key: 'services' as const, href: '#faaliyetlerimiz' },
+  { key: 'projects' as const, href: '#projeler' },
+  { key: 'gallery' as const, href: '#galeri' },
+  { key: 'references' as const, href: '#referanslar' },
+  { key: 'contact' as const, href: '#iletisim' },
 ]
 </script>
 
