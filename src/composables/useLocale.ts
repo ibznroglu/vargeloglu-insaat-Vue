@@ -6,9 +6,12 @@ type LocaleKey = 'tr' | 'en'
 
 const locales = { tr, en }
 
-const current = ref<LocaleKey>(
-  (localStorage.getItem('locale') as LocaleKey) ?? 'tr'
-)
+const savedLocale = (localStorage.getItem('locale') as LocaleKey) ?? 'tr'
+
+const current = ref<LocaleKey>(savedLocale)
+
+// Sayfa yüklenirken hemen uygula
+document.documentElement.lang = savedLocale
 
 export function useLocale() {
   const t = computed(() => locales[current.value])
