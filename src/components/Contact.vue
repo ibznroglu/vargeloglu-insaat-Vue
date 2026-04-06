@@ -4,14 +4,11 @@
     <div class="container contact-inner">
 
       <div class="contact-content">
-        <p class="kicker reveal">İletişim</p>
+        <p class="kicker reveal">{{ t.contact.kicker }}</p>
         <h2 class="contact-title reveal reveal-delay-1">
-          Projeniz için<br />bizimle iletişime geçin
+          {{ t.contact.title1 }}<br />{{ t.contact.title2 }}
         </h2>
-        <p class="contact-desc reveal reveal-delay-2">
-          Hafriyat, altyapı, çevre düzenleme ve inşaat işleriniz için bizimle doğrudan
-          iletişime geçebilirsiniz.
-        </p>
+        <p class="contact-desc reveal reveal-delay-2">{{ t.contact.desc }}</p>
       </div>
 
       <div class="contact-right reveal reveal-delay-2">
@@ -23,8 +20,8 @@
               </svg>
             </div>
             <div>
-              <strong>Adres</strong>
-              <span>Kadriye Mh. 260 Sk. No:17/1 Serik / ANTALYA</span>
+              <strong>{{ t.contact.address }}</strong>
+              <span>{{ t.contact.addressValue }}</span>
             </div>
           </div>
 
@@ -35,8 +32,8 @@
               </svg>
             </div>
             <div>
-              <strong>Cep</strong>
-              <a href="tel:+905339674066">0 533 967 40 66</a>
+              <strong>{{ t.contact.phone }}</strong>
+              <a href="tel:+905339674066">+90 533 967 40 66</a>
             </div>
           </div>
 
@@ -47,7 +44,7 @@
               </svg>
             </div>
             <div>
-              <strong>E-posta</strong>
+              <strong>{{ t.contact.email }}</strong>
               <a href="mailto:vargelogluinsaat@hotmail.com">vargelogluinsaat@hotmail.com</a>
             </div>
           </div>
@@ -62,7 +59,7 @@
             :allowfullscreen="true"
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            title="Vargeloğlu İnşaat Konum"
+            :title="t.contact.mapTitle"
           ></iframe>
         </div>
       </div>
@@ -70,6 +67,11 @@
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { useLocale } from '../composables/useLocale'
+const { t } = useLocale()
+</script>
 
 <style scoped>
 .contact {
