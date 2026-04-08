@@ -6,15 +6,19 @@
       </div>
 
       <div class="references-grid">
-        <div
+        <a
           v-for="(item, i) in references"
           :key="i"
+          :href="item.url"
+          target="_blank"
+          rel="noopener noreferrer"
           class="ref-card reveal"
           :class="`reveal-delay-${(i % 4) + 1}`"
+          :aria-label="item.title"
         >
           <img :src="item.image" :alt="item.title" class="ref-img" />
           <span class="ref-name">{{ item.title }}</span>
-        </div>
+        </a>
       </div>
     </div>
   </section>
@@ -46,35 +50,32 @@ import alke from '../assets/reference-companies/alke.png'
 import baki from '../assets/reference-companies/baki-grup.png'
 import eras from '../assets/reference-companies/eras.png'
 
-
 const { t } = useLocale()
 
 const references = [
-  { title: 'Regnum Carya Hotel', image: regnumCarya },
-  { title: 'Regnum Carya Golf Club', image: caryaGolf },
-  { title: 'Regnum Golf & Country Club, Bodrum', image: bodrumGolf },
-  { title: 'Regnum Golf & Country Club, Ankara', image: ankaraGolf },
-  { title: 'Regnum The Crown Belek', image: regnumCrown },
-  { title: 'Maxx Royal Kemer Resort', image: kiris },
-  { title: 'Caja by Maxx Royal', image: caja },
-  { title: 'Papillon Belvil Hotel', image: belvil },
-  { title: 'Papillon Zeugma Relaxury', image: zeugma },
-  { title: 'Otium Hotel, Titreyengöl', image: otium },
-  { title: 'Calista Luxury Resort', image: calista },
-  { title: 'Ela Quality Resort', image: ela },
-  { title: 'Susesi Luxury Resort', image: susesi },
-  { title: 'Kilikya Palace Hotel', image: kilikya },
-  { title: 'Barut Sunwing Resort Hotel', image: sunwing },
-  { title: 'Zeynep Golf Resort', image: zeynep },
-  { title: 'Antalya Su ve Atıksu İdaresi', image: asat },
-  { title: 'Antalya OSB', image: antalyaOsb },
-  { title: 'Karapınar OSB', image: karapinarOsb },
-  { title: 'Atilla İnşaat', image: atilla },
-  { title: 'Alke İnşaat', image: alke },
-  { title: 'Baki Grup', image: baki },
-  { title: 'Eras İnşaat', image: eras },
-  
-
+  { title: 'Regnum Carya Hotel',                    image: regnumCarya,  url: 'https://www.regnumhotels.com/tr/otellerimiz/regnum-carya/' },
+  { title: 'Regnum Carya Golf Club',                image: caryaGolf,    url: 'https://www.regnumhotels.com/golf/carya-golf-club/' },
+  { title: 'Regnum Golf & Country Club, Bodrum',    image: bodrumGolf,   url: 'https://www.regnum.com.tr/projects/regnum-golf-country-bodrum/' },
+  { title: 'Regnum Golf & Country Club, Ankara',    image: ankaraGolf,   url: 'https://www.regnum.com.tr/projects/regnum-ankara-golf-country/' },
+  { title: 'Regnum The Crown Belek',                image: regnumCrown,  url: 'https://www.regnumhotels.com/regnum-the-crown/' },
+  { title: 'Maxx Royal Kemer Resort',               image: kiris,        url: 'https://www.maxxroyal.com/tr/kemer-resort' },
+  { title: 'Caja by Maxx Royal',                    image: caja,         url: 'https://www.maxxroyal.com/caja-by-maxx-royal' },
+  { title: 'Papillon Belvil Hotel',                 image: belvil,       url: 'https://papillon.com.tr/belvil/papillon-belvil/' },
+  { title: 'Papillon Zeugma Relaxury',              image: zeugma,       url: 'https://papillon.com.tr/zeugma/' },
+  { title: 'Otium Hotel, Titreyengöl',              image: otium,        url: 'https://marvidahotels.com/tr/oteller/marvida-family-eco' },
+  { title: 'Calista Luxury Resort',                 image: calista,      url: 'https://calista.com.tr/' },
+  { title: 'Ela Quality Resort',                    image: ela,          url: 'https://www.elahotels.com/tr/otellerimiz/ela-excellence-resort-belek/' },
+  { title: 'Susesi Luxury Resort',                  image: susesi,       url: 'https://www.susesihotel.com/tr/' },
+  { title: 'Kilikya Palace Hotel',                  image: kilikya,      url: 'https://www.kilikyapalace.com/tr' },
+  { title: 'Barut Sunwing Resort Hotel',            image: sunwing,      url: 'https://baruthotels.com/tr/news/great-transformation-at-barut-sunwing-side-beach' },
+  { title: 'Zeynep Golf Resort',                    image: zeynep,       url: 'https://sentido-zeynep-resort.belek-hotels.com/tr/' },
+  { title: 'Antalya Su ve Atıksu İdaresi',          image: asat,         url: 'https://www.asat.gov.tr/tr/1' },
+  { title: 'Antalya OSB',                           image: antalyaOsb,   url: 'https://www.antalyaosb.org.tr/tr' },
+  { title: 'Karapınar OSB',                         image: karapinarOsb, url: 'https://sp.sanayigazetesi.com.tr/listing/konya-karapinar-osb/' },
+  { title: 'Atilla İnşaat',                         image: atilla,       url: 'https://www.atillainsaat.com/TR/Genel/Default.aspx?F6E10F8892433CFFAAF6AA849816B2EF4376734BED947CDE' },
+  { title: 'Alke İnşaat',                           image: alke,         url: 'https://www.alke.com.tr/' },
+  { title: 'Baki Grup',                             image: baki,         url: 'https://bakigrup.com/' },
+  { title: 'Eras İnşaat',                           image: eras,         url: 'https://www.erasinsaat.com.tr/' },
 ]
 </script>
 
@@ -118,7 +119,8 @@ const references = [
   border-right: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
   transition: background 0.3s;
-  cursor: default;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .ref-card:hover {
