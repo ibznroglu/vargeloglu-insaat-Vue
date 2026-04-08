@@ -63,11 +63,11 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { useLocale } from '../composables/useLocale'
-import slide01 from '../assets/slider/slide1.png'
-import slide02 from '../assets/slider/slide2.png'
-import slide03 from '../assets/slider/slide3.png'
-import slide04 from '../assets/slider/slide4.png'
-import slide05 from '../assets/slider/slide5.png'
+import slide01 from '../assets/slider/slide1.webp'
+import slide02 from '../assets/slider/slide2.webp'
+import slide03 from '../assets/slider/slide3.webp'
+import slide04 from '../assets/slider/slide4.webp'
+import slide05 from '../assets/slider/slide5.webp'
 
 const { t } = useLocale()
 
