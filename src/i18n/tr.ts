@@ -31,7 +31,7 @@ export const tr = {
     p2: 'Amacımız, siz değerli işverenlerimize en iyi hizmeti vermek ve sizlerin bizim için çok değerli düşüncelerinizin olumlu olması için var gücümüzle çalışmaktır.',
     p3: 'Vargeloğlu İnşaat\'ı tercih ettiğiniz için teşekkür ederiz.',
     badgeLabel: 'Kuruluş Yılı',
-    role: 'Genel Koordinatör',
+    role: 'Kurucu & Müdür',
     imgAlt: 'İş makineleri',
   },
   services: {

@@ -31,7 +31,7 @@ export const en = {
     p2: 'Our goal is to provide the best service to our valued clients and to work with full dedication to earn your trust and satisfaction.',
     p3: 'Thank you for choosing Vargeloğlu İnşaat.',
     badgeLabel: 'Founded',
-    role: 'General Coordinator',
+    role: 'Founder & Director',
     imgAlt: 'Construction machinery',
   },
   services: {
