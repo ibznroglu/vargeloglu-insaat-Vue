@@ -3,7 +3,7 @@
     <div class="container intro-inner">
 
       <div class="intro-media reveal">
-        <img src="../assets/company-intro.png" :alt="t.intro.imgAlt" />
+        <img src="../assets/company-intro.webp" :alt="t.intro.imgAlt" />
         <div class="intro-media-badge">
           <span class="badge-num">1985</span>
           <span class="badge-label">{{ t.intro.badgeLabel }}</span>
