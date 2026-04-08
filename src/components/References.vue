@@ -3,30 +3,18 @@
     <div class="container">
       <div class="references-head">
         <p class="kicker reveal">{{ t.references.kicker }}</p>
-        <h2 class="references-title reveal reveal-delay-1">{{ t.references.title }}</h2>
       </div>
 
       <div class="references-grid">
-        <article
+        <div
           v-for="(item, i) in references"
           :key="i"
           class="ref-card reveal"
-          :class="`reveal-delay-${(i % 3) + 1}`"
+          :class="`reveal-delay-${(i % 4) + 1}`"
         >
-          <div class="ref-img-wrap">
-            <img :src="item.image" :alt="item.title" class="ref-img" />
-          </div>
-          <div class="ref-body">
-            <span class="ref-period">{{ item.period }}</span>
-            <h3>{{ item.title }}</h3>
-            <div class="ref-meta">
-              <p v-if="item.project">{{ t.references[item.project] }}</p>
-              <p v-if="item.location">{{ item.location }}</p>
-              <p v-if="item.manager">{{ t.references.projectManager }}: {{ item.manager }}</p>
-              <p v-if="item.assistant">{{ t.references.generalManagerAss }}: {{ item.assistant }}</p>
-            </div>
-          </div>
-        </article>
+          <img :src="item.image" :alt="item.title" class="ref-img" />
+          <span class="ref-name">{{ item.title }}</span>
+        </div>
       </div>
     </div>
   </section>
@@ -49,29 +37,19 @@ import caja from '../assets/reference-companies/caja.jpeg'
 
 const { t } = useLocale()
 
-type ProjectKey = 'worldBank' | 'illBank' | 'hotelInfra'
-
-const references: {
-  title: string
-  period?: string
-  project?: ProjectKey
-  location?: string
-  manager?: string
-  assistant?: string
-  image: string
-}[] = [
-  { title: 'Alke İnşaat', period: '2001-2004', project: 'worldBank', manager: 'Enver KARABACAK', image: alke },
-  { title: 'Baki Grup', period: '1997-1999', project: 'worldBank', manager: 'Murat EĞRİ', image: baki },
-  { title: 'Eras İnşaat', period: '1999-2000', project: 'illBank', location: 'Kadriye, Serik, Antalya', manager: 'Ertuğrul BAĞLAN', image: eras },
-  { title: 'Ela Quality Resort Otel', period: '2006-2007', location: 'Belek, Antalya', manager: 'Tolga OZAN', image: ela },
-  { title: 'Calista Otel', period: '2005-2006', location: 'Belek, Antalya', manager: 'Ali ÖGER', image: calista },
-  { title: 'Susesi Otel', period: '2006-2007', location: 'Belek, Antalya', manager: 'Orhan ÖZMEN', image: susesi },
-  { title: 'Carya Golf Club', period: '2007-2008', project: 'hotelInfra', location: 'Belek, Antalya', manager: 'Tolga OZAN', image: carya },
-  { title: 'Maxx Royal Golf Club (Papillon) Golf Villaları', period: '2010-2011', location: 'Belek, Antalya', manager: 'Ömer ÖZTÜRK', image: maxx },
-  { title: 'Zeynep Golf Resort Otel', period: '2010-2011', location: 'Belek, Antalya', manager: 'Hasan Basri UZUN', assistant: 'Mehmet KINIK', image: zeynep },
-  { title: 'Kilikya Palace Hotel', period: '2011-2012', location: 'Göynük, Kemer, Antalya', manager: 'Rıza ÇALIŞKAN', image: kilikya },
-  { title: 'Sunwing Resort Otel', period: '2011-2012', manager: 'Muharrem ALTUĞ', image: sunwing },
-  { title: 'Caja by Maxx Royal Resort Otel', location: 'Türkbükü, Bodrum, Muğla', image: caja },
+const references = [
+  { title: 'Alke İnşaat', image: alke },
+  { title: 'Baki Grup', image: baki },
+  { title: 'Eras İnşaat', image: eras },
+  { title: 'Ela Quality Resort', image: ela },
+  { title: 'Calista Otel', image: calista },
+  { title: 'Susesi Otel', image: susesi },
+  { title: 'Carya Golf Club', image: carya },
+  { title: 'Maxx Royal', image: maxx },
+  { title: 'Zeynep Golf Resort', image: zeynep },
+  { title: 'Kilikya Palace Hotel', image: kilikya },
+  { title: 'Sunwing Resort', image: sunwing },
+  { title: 'Caja by Maxx Royal', image: caja },
 ]
 </script>
 
@@ -92,105 +70,73 @@ const references: {
 }
 
 .references-head {
-  margin-bottom: 52px;
-}
-
-.references-title {
-  margin-top: 16px;
-  font-family: var(--font-display);
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
-  font-weight: 800;
-  color: var(--color-heading);
-  letter-spacing: -0.02em;
+  margin-bottom: 48px;
 }
 
 .references-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
 }
 
 .ref-card {
-  border-radius: var(--radius-lg);
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 32px 24px;
   background: var(--color-dark-3);
-  border: 1px solid var(--color-border);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  border-right: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+  transition: background 0.3s;
+  cursor: default;
 }
 
 .ref-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.35);
-  border-color: var(--color-border-gold);
-}
-
-.ref-img-wrap {
-  overflow: hidden;
+  background: rgba(201, 168, 76, 0.04);
 }
 
 .ref-img {
-  aspect-ratio: 16/9;
-  object-fit: contain;
-  background: #1a2030;
-  padding: 24px;
   width: 100%;
-  transition: transform 0.5s, filter 0.3s;
-  display: block;
-  filter: brightness(0.85);
+  height: 64px;
+  object-fit: contain;
+  filter: brightness(0.6) grayscale(0.2);
+  transition: filter 0.3s;
 }
 
 .ref-card:hover .ref-img {
-  transform: scale(1.04);
-  filter: brightness(1);
+  filter: brightness(1) grayscale(0);
 }
 
-.ref-body {
-  padding: 18px 20px 20px;
-}
-
-.ref-period {
-  display: inline-block;
+.ref-name {
   font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: var(--color-gold);
-  margin-bottom: 8px;
-}
-
-.ref-body h3 {
-  font-size: 0.98rem;
-  font-weight: 700;
-  color: var(--color-heading);
-  line-height: 1.35;
-  letter-spacing: -0.01em;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  line-clamp: 2;
-  overflow: hidden;
-}
-
-.ref-meta {
-  margin-top: 10px;
-  padding-top: 10px;
-  border-top: 1px solid var(--color-border);
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.ref-meta p {
-  font-size: 0.8rem;
+  font-weight: 600;
   color: var(--color-text-muted);
-  line-height: 1.5;
+  text-align: center;
+  letter-spacing: 0.02em;
+  transition: color 0.3s;
+  line-height: 1.4;
+}
+
+.ref-card:hover .ref-name {
+  color: var(--color-gold);
+}
+
+@media (max-width: 1024px) {
+  .references-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
 @media (max-width: 900px) {
-  .references-grid { grid-template-columns: 1fr 1fr; }
+  .references-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
-@media (max-width: 480px) {
-  .references-grid { grid-template-columns: 1fr; }
+@media (max-width: 600px) {
+  .references-grid { grid-template-columns: repeat(2, 1fr); }
   .references { padding: 72px 0; }
+  .ref-card { padding: 24px 16px; }
 }
 </style>

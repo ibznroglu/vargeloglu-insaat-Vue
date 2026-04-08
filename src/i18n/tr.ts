@@ -60,12 +60,6 @@ export const tr = {
   },
   references: {
     kicker: 'Referanslar',
-    title: 'Tamamlanan işlerden seçili referanslar',
-    projectManager: 'Proje Müdürü',
-    generalManagerAss: 'Gnl. Müd. Yrd',
-    worldBank: 'Dünya Bankası Projesi',
-    illBank: 'İller Bankası Projesi',
-    hotelInfra: 'Otel Altyapı Projesi',
   },
   contact: {
     kicker: 'İletişim',

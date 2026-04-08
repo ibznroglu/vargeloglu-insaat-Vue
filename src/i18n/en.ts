@@ -60,12 +60,6 @@ export const en = {
   },
   references: {
     kicker: 'References',
-    title: 'Selected references from completed works',
-    projectManager: 'Project Manager',
-    generalManagerAss: 'Asst. General Manager',
-    worldBank: 'Dünya Bank Project',
-    illBank: 'İller Bank Project',
-    hotelInfra: 'Hotel Infrastructure Project',
   },
   contact: {
     kicker: 'Contact',
