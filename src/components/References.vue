@@ -22,34 +22,59 @@
 
 <script setup lang="ts">
 import { useLocale } from '../composables/useLocale'
+import regnumCarya from '../assets/reference-companies/regnum-carya-hotel.jpg'
+import regnumCrown from '../assets/reference-companies/regnum-crown.jpg'
+import caryaGolf from '../assets/reference-companies/carya-golf.jpg'
+import bodrumGolf from '../assets/reference-companies/regnum-golf-bodrum.png'
+import ankaraGolf from '../assets/reference-companies/regnum-golf-ankara.png'
+import kiris from '../assets/reference-companies/maxx-kiris.png'
+import caja from '../assets/reference-companies/caja.jpeg'
+import belvil from '../assets/reference-companies/papillon-belvil.jpg'
+import zeugma from '../assets/reference-companies/papillon-zeugma.jpg'
+import otium from '../assets/reference-companies/otium.webp'
+import calista from '../assets/reference-companies/calista.png'
+import ela from '../assets/reference-companies/ela-quality.jpg'
+import susesi from '../assets/reference-companies/susesi.webp'
+import kilikya from '../assets/reference-companies/kilikya.png'
+import sunwing from '../assets/reference-companies/sunwing.jpg'
+import zeynep from '../assets/reference-companies/zeynep-golf.png'
+import asat from '../assets/reference-companies/asat.jpg'
+import atilla from '../assets/reference-companies/atilla.gif'
+import antalyaOsb from '../assets/reference-companies/antalya-osb.jpg'
+import karapinarOsb from '../assets/reference-companies/karapinar-osb.png'
 import alke from '../assets/reference-companies/alke.png'
 import baki from '../assets/reference-companies/baki-grup.png'
 import eras from '../assets/reference-companies/eras.png'
-import maxx from '../assets/reference-companies/maxx-royal.png'
-import kilikya from '../assets/reference-companies/kilikya.png'
-import sunwing from '../assets/reference-companies/sunwing.jpg'
-import calista from '../assets/reference-companies/calista.png'
-import ela from '../assets/reference-companies/ela-quality.png'
-import susesi from '../assets/reference-companies/susesi.png'
-import carya from '../assets/reference-companies/regnum-carya.png'
-import zeynep from '../assets/reference-companies/zeynep-golf.png'
-import caja from '../assets/reference-companies/caja.jpeg'
+
 
 const { t } = useLocale()
 
 const references = [
+  { title: 'Regnum Carya Hotel', image: regnumCarya },
+  { title: 'Regnum Carya Golf Club', image: caryaGolf },
+  { title: 'Regnum Golf & Country Club, Bodrum', image: bodrumGolf },
+  { title: 'Regnum Golf & Country Club, Ankara', image: ankaraGolf },
+  { title: 'Regnum The Crown Belek', image: regnumCrown },
+  { title: 'Maxx Royal Kemer Resort', image: kiris },
+  { title: 'Caja by Maxx Royal', image: caja },
+  { title: 'Papillon Belvil Hotel', image: belvil },
+  { title: 'Papillon Zeugma Relaxury', image: zeugma },
+  { title: 'Otium Hotel, Titreyengöl', image: otium },
+  { title: 'Calista Luxury Resort', image: calista },
+  { title: 'Ela Quality Resort', image: ela },
+  { title: 'Susesi Luxury Resort', image: susesi },
+  { title: 'Kilikya Palace Hotel', image: kilikya },
+  { title: 'Barut Sunwing Resort Hotel', image: sunwing },
+  { title: 'Zeynep Golf Resort', image: zeynep },
+  { title: 'Antalya Su ve Atıksu İdaresi', image: asat },
+  { title: 'Antalya OSB', image: antalyaOsb },
+  { title: 'Karapınar OSB', image: karapinarOsb },
+  { title: 'Atilla İnşaat', image: atilla },
   { title: 'Alke İnşaat', image: alke },
   { title: 'Baki Grup', image: baki },
   { title: 'Eras İnşaat', image: eras },
-  { title: 'Ela Quality Resort', image: ela },
-  { title: 'Calista Otel', image: calista },
-  { title: 'Susesi Otel', image: susesi },
-  { title: 'Carya Golf Club', image: carya },
-  { title: 'Maxx Royal', image: maxx },
-  { title: 'Zeynep Golf Resort', image: zeynep },
-  { title: 'Kilikya Palace Hotel', image: kilikya },
-  { title: 'Sunwing Resort', image: sunwing },
-  { title: 'Caja by Maxx Royal', image: caja },
+  
+
 ]
 </script>
 
