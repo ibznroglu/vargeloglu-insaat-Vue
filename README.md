@@ -49,7 +49,7 @@ npm run preview
 ## 📁 Project Structure
 ```
 ├── public/
-│   └── favicon.svg
+│   └── favicon.png
 ├── src/
 │   ├── assets/
 │   │   ├── gallery/             # Gallery images
