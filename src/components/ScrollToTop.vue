@@ -50,22 +50,22 @@ onUnmounted(() => window.removeEventListener('scroll', onScroll))
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 1px solid var(--color-border-gold);
-  background: var(--color-dark-2);
+  border: 1.5px solid var(--color-gold);
+  background: rgba(201, 168, 76, 0.12);
   color: var(--color-gold);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(201, 168, 76, 0.1);
-  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.15);
+  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
+  backdrop-filter: blur(8px);
 }
 
 .scroll-top-btn:hover {
-  background: var(--color-gold-muted);
-  border-color: var(--color-gold);
+  background: rgba(201, 168, 76, 0.25);
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(201, 168, 76, 0.2), 0 0 0 1px rgba(201, 168, 76, 0.25);
+  box-shadow: 0 8px 28px rgba(201, 168, 76, 0.3);
 }
 
 .scroll-top-btn:active {
