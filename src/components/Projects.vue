@@ -52,28 +52,29 @@ import kirkgoz from '../assets/project-companies/kirkgoz.jpg'
 import karapinar from '../assets/project-companies/karapinar.webp'
 
 const { t } = useLocale()
+import { computed } from 'vue'
 
-const projects = [
-  { title: 'Regnum Carya Belek', period: '', image: carya },
-  { title: 'Carya Belek Golf Club', period: '2007-2008', image: caryaGolf },
-  { title: 'Bodrum Regnum Golf & Country', period: '', image: bodrumGolf },
-  { title: 'Ankara Regnum Golf & Country', period: '', image: ankaraGolf },
-  { title: 'Regnum The Crown Belek', period: '', image: regnumCrown },
-  { title: 'Caja by Maxx Royal', period: '', image: caja },
-  { title: 'Maxx Royal Kemer Resort', period: '', image: kiris },
-  { title: 'Papillon Belvil Hotel', period: '', image: belvil },
-  { title: 'Papillon Zeugma Relaxury', period: '', image: zeugma },
-  { title: 'Otium Hotel, Titreyengöl', period: '', image: otium },
-  { title: 'Calista Luxury Resort', period: '2005-2006', image: calista },
-  { title: 'Ela Quality Resort Otel', period: '2006-2007', image: ela },
-  { title: 'Susesi Luxury Resort', period: '2006-2007', image: susesi },
-  { title: 'Zeynep Golf Resort Otel', period: '2010-2011', image: zeynep },
-  { title: 'ASAT Kuzey Antalya İçme Suyu Tesisi (Alt Yüklenici)', period: '', image: asatKuzey },
-  { title: 'ASAT Konyaaltı Yağmursuyu İnşaatı(Alt Yüklenici)', period: '', image: asatKonyaalti },
-  { title: 'Antalya OSB 2. Etap', period: '', image: antalyaOsb },
-  { title: 'Döşemealtı Kırkgöz Sanayi Tesisi', period: '', image: kirkgoz },
-  { title: 'Karapınar OSB 2. Etap(Alt Yüklenici)', period: '', image: karapinar },
-]
+const projects = computed(() => [
+  { title: t.value.projects.items[0],  period: '',          image: carya },
+  { title: t.value.projects.items[1],  period: '2007-2008', image: caryaGolf },
+  { title: t.value.projects.items[2],  period: '',          image: bodrumGolf },
+  { title: t.value.projects.items[3],  period: '',          image: ankaraGolf },
+  { title: t.value.projects.items[4],  period: '',          image: regnumCrown },
+  { title: t.value.projects.items[5],  period: '',          image: caja },
+  { title: t.value.projects.items[6],  period: '',          image: kiris },
+  { title: t.value.projects.items[7],  period: '',          image: belvil },
+  { title: t.value.projects.items[8],  period: '',          image: zeugma },
+  { title: t.value.projects.items[9],  period: '',          image: otium },
+  { title: t.value.projects.items[10], period: '2005-2006', image: calista },
+  { title: t.value.projects.items[11], period: '2006-2007', image: ela },
+  { title: t.value.projects.items[12], period: '2006-2007', image: susesi },
+  { title: t.value.projects.items[13], period: '2010-2011', image: zeynep },
+  { title: t.value.projects.items[14], period: '',          image: asatKuzey },
+  { title: t.value.projects.items[15], period: '',          image: asatKonyaalti },
+  { title: t.value.projects.items[16], period: '',          image: antalyaOsb },
+  { title: t.value.projects.items[17], period: '',          image: kirkgoz },
+  { title: t.value.projects.items[18], period: '',          image: karapinar },
+])
 </script>
 
 <style scoped>
