@@ -28,7 +28,14 @@
           :data-pswp-height="item.height"
           :aria-label="`${t.gallery.imgAlt} ${index + 1}`"
         >
-          <img :src="item.src" :alt="`${t.gallery.imgAlt} ${index + 1}`" loading="lazy" decoding="async" />
+          <div class="skeleton"></div>
+          <img
+            :src="item.src"
+            :alt="`${t.gallery.imgAlt} ${index + 1}`"
+            loading="lazy"
+            decoding="async"
+            @load="onImageLoad"
+          />
         </a>
       </div>
 
@@ -45,7 +52,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, watch, nextTick} from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import PhotoSwipeLightbox from 'photoswipe/lightbox'
 import 'photoswipe/style.css'
 import { galleryItems, categories, type Category } from '../data/gallery'
@@ -79,6 +86,13 @@ const visibleItems = computed(() =>
 function setCategory(cat: Category | 'all') {
   activeCategory.value = cat
   isExpanded.value = false
+}
+
+function onImageLoad(e: Event) {
+  const img = e.target as HTMLImageElement
+  img.classList.add('loaded')
+  const skeleton = img.previousElementSibling as HTMLElement
+  if (skeleton) skeleton.classList.add('hidden')
 }
 
 function initLightbox() {
@@ -177,6 +191,7 @@ onBeforeUnmount(() => {
 }
 
 .gallery-card {
+  position: relative;
   display: block;
   overflow: hidden;
   border-radius: var(--radius-md);
@@ -189,18 +204,48 @@ onBeforeUnmount(() => {
   border-color: var(--color-border-gold);
 }
 
+.skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    var(--color-dark-3) 25%,
+    var(--color-dark-2) 50%,
+    var(--color-dark-3) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  z-index: 1;
+}
+
+.skeleton.hidden {
+  display: none;
+}
+
 .gallery-card img {
   display: block;
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  transition: transform 0.4s ease, filter 0.4s ease;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.4s ease, filter 0.4s ease;
   filter: brightness(0.9);
+  position: relative;
+  z-index: 2;
 }
 
-.gallery-card:hover img {
+.gallery-card img.loaded {
+  opacity: 1;
+}
+
+.gallery-card:hover img.loaded {
   transform: scale(1.05);
   filter: brightness(1.05);
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 
 .gallery-toggle {
