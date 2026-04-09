@@ -30,20 +30,49 @@
 
 <script setup lang="ts">
 import { useLocale } from '../composables/useLocale'
+
+import carya from '../assets/project-companies/regnum-carya.jpg'
+import caryaGolf from '../assets/project-companies/carya-golf.jpg'
+import bodrumGolf from '../assets/project-companies/bodrum-regnum-golf.jpg'
+import ankaraGolf from '../assets/project-companies/ankara-regnum-golf.jpg'
+import regnumCrown from '../assets/project-companies/regnum-the-crown.jpg'
+import caja from '../assets/project-companies/caja-maxx.jpg'
+import kiris from '../assets/project-companies/maxx-kiris.webp'
+import belvil from '../assets/project-companies/belvil.webp'
+import zeugma from '../assets/project-companies/zeugma.webp'
+import otium from '../assets/project-companies/otium.jpg'
 import calista from '../assets/project-companies/calista-resort.jpg'
 import ela from '../assets/project-companies/ela-quality-resort.jpg'
 import susesi from '../assets/project-companies/susesi.jpg'
-import carya from '../assets/project-companies/regnum-carya.jpg'
 import zeynep from '../assets/project-companies/zeynep-golf.jpg'
+import asatKuzey from '../assets/project-companies/asat-kuzey.webp'
+import antalyaOsb from '../assets/project-companies/antalya-osb2.jpg'
+import asatKonyaalti from '../assets/project-companies/asat-konyaalti.webp'
+import kirkgoz from '../assets/project-companies/kirkgoz.jpg'
+import karapinar from '../assets/project-companies/karapinar.webp'
 
 const { t } = useLocale()
 
 const projects = [
-  { title: 'Calista Otel', period: '2005-2006', image: calista },
+  { title: 'Regnum Carya Belek', period: '', image: carya },
+  { title: 'Carya Belek Golf Club', period: '2007-2008', image: caryaGolf },
+  { title: 'Bodrum Regnum Golf & Country', period: '', image: bodrumGolf },
+  { title: 'Ankara Regnum Golf & Country', period: '', image: ankaraGolf },
+  { title: 'Regnum The Crown Belek', period: '', image: regnumCrown },
+  { title: 'Caja by Maxx Royal', period: '', image: caja },
+  { title: 'Maxx Royal Kemer Resort', period: '', image: kiris },
+  { title: 'Papillon Belvil Hotel', period: '', image: belvil },
+  { title: 'Papillon Zeugma Relaxury', period: '', image: zeugma },
+  { title: 'Otium Hotel, Titreyengöl', period: '', image: otium },
+  { title: 'Calista Luxury Resort', period: '2005-2006', image: calista },
   { title: 'Ela Quality Resort Otel', period: '2006-2007', image: ela },
   { title: 'Susesi Luxury Resort', period: '2006-2007', image: susesi },
-  { title: 'Carya Golf Club', period: '2007-2008', image: carya },
   { title: 'Zeynep Golf Resort Otel', period: '2010-2011', image: zeynep },
+  { title: 'ASAT Kuzey Antalya İçme Suyu Tesisi (Alt Yüklenici)', period: '', image: asatKuzey },
+  { title: 'ASAT Konyaaltı Yağmursuyu İnşaatı(Alt Yüklenici)', period: '', image: asatKonyaalti },
+  { title: 'Antalya OSB 2. Etap', period: '', image: antalyaOsb },
+  { title: 'Döşemealtı Kırkgöz Sanayi Tesisi', period: '', image: kirkgoz },
+  { title: 'Karapınar OSB 2. Etap(Alt Yüklenici)', period: '', image: karapinar },
 ]
 </script>
 
@@ -77,15 +106,12 @@ const projects = [
 }
 
 .projects-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
 }
 
 .project-card {
-  flex: 0 1 calc(33.333% - 14px);
-  min-width: 280px;
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: var(--color-dark-3);
@@ -142,22 +168,31 @@ const projects = [
 }
 
 .project-body {
-  padding: 18px 20px;
+  padding: 12px 14px;
 }
 
 .project-body h3 {
-  font-size: 1rem;
+  font-size: 0.82rem;
   font-weight: 700;
   color: var(--color-heading);
   letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+@media (max-width: 1200px) {
+  .projects-grid { grid-template-columns: repeat(4, 1fr); }
 }
 
 @media (max-width: 900px) {
-  .project-card { flex: 0 1 calc(50% - 10px); }
+  .projects-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
-@media (max-width: 480px) {
-  .project-card { flex: 0 1 100%; }
+@media (max-width: 600px) {
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
   .projects { padding: 72px 0; }
+}
+
+@media (max-width: 400px) {
+  .projects-grid { grid-template-columns: 1fr; }
 }
 </style>
