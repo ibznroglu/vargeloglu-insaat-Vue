@@ -115,6 +115,11 @@ export const tr = {
   scrollTop: {
     ariaLabel: 'Sayfanın en üstüne git',
   },
+  notFound: {
+  title: 'Sayfa Bulunamadı',
+  desc: 'Aradığınız sayfa mevcut değil veya taşınmış olabilir.',
+  btn: 'Ana Sayfaya Dön',
+},
 }
 
 export type Locale = typeof tr

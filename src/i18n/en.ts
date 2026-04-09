@@ -115,4 +115,9 @@ export const en = {
   scrollTop: {
     ariaLabel: 'Scroll to top',
   },
+  notFound: {
+  title: 'Page Not Found',
+  desc: 'The page you are looking for does not exist or may have been moved.',
+  btn: 'Back to Home',
+},
 }
