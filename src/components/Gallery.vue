@@ -6,13 +6,24 @@
         <h2 class="reveal reveal-delay-1">{{ t.gallery.title }}</h2>
       </div>
 
+      <div class="gallery-filters reveal">
+        <button
+          v-for="cat in filterButtons"
+          :key="cat.key"
+          class="filter-btn"
+          :class="{ active: activeCategory === cat.key }"
+          @click="setCategory(cat.key)"
+        >
+          {{ cat.label }}
+        </button>
+      </div>
+
       <div id="gallery-grid" class="gallery-grid">
         <a
           v-for="(item, index) in visibleItems"
           :key="item.id"
           :href="item.src"
           class="gallery-card"
-          :class="{ 'gallery-card--featured': index < 2 && !isMobile }"
           :data-pswp-width="item.width"
           :data-pswp-height="item.height"
           :aria-label="`${t.gallery.imgAlt} ${index + 1}`"
@@ -22,55 +33,73 @@
       </div>
 
       <button
-        v-if="galleryItems.length > previewCount"
+        v-if="filteredItems.length > previewCount"
         type="button"
         class="gallery-toggle"
         @click="isExpanded = !isExpanded"
       >
-        {{ isExpanded ? t.gallery.showLess : `${t.gallery.showMore} (${galleryItems.length})` }}
+        {{ isExpanded ? t.gallery.showLess : `${t.gallery.showMore} (${filteredItems.length})` }}
       </button>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import PhotoSwipeLightbox from 'photoswipe/lightbox'
 import 'photoswipe/style.css'
-import { galleryItems } from '../data/gallery'
+import { galleryItems, categories, type Category } from '../data/gallery'
 import { useLocale } from '../composables/useLocale'
 
 const { t } = useLocale()
 
 const previewCount = 12
 const isExpanded = ref(false)
-const isMobile = ref(false)
-
-const visibleItems = computed(() =>
-  isExpanded.value ? galleryItems : galleryItems.slice(0, previewCount),
-)
-
+const activeCategory = ref<Category | 'all'>('all')
 let lightbox: PhotoSwipeLightbox | null = null
 
-function syncViewport() {
-  isMobile.value = window.innerWidth < 768
+const filterButtons = computed(() => [
+  { key: 'all' as const, label: t.value.gallery.categories.all },
+  ...categories.map(cat => ({
+    key: cat,
+    label: t.value.gallery.categories[cat],
+  })),
+])
+
+const filteredItems = computed(() =>
+  activeCategory.value === 'all'
+    ? galleryItems
+    : galleryItems.filter(item => item.category === activeCategory.value)
+)
+
+const visibleItems = computed(() =>
+  isExpanded.value ? filteredItems.value : filteredItems.value.slice(0, previewCount)
+)
+
+function setCategory(cat: Category | 'all') {
+  activeCategory.value = cat
+  isExpanded.value = false
 }
 
-onMounted(() => {
-  syncViewport()
-  window.addEventListener('resize', syncViewport)
-
+function initLightbox() {
+  lightbox?.destroy()
   lightbox = new PhotoSwipeLightbox({
     gallery: '#gallery-grid',
     children: 'a',
     pswpModule: () => import('photoswipe'),
   })
-
   lightbox.init()
+}
+
+watch(visibleItems, () => {
+  setTimeout(initLightbox, 100)
+})
+
+onMounted(() => {
+  initLightbox()
 })
 
 onBeforeUnmount(() => {
-  window.removeEventListener('resize', syncViewport)
   lightbox?.destroy()
   lightbox = null
 })
@@ -93,7 +122,7 @@ onBeforeUnmount(() => {
 }
 
 .gallery-head {
-  margin-bottom: 48px;
+  margin-bottom: 32px;
 }
 
 .gallery-head h2 {
@@ -103,6 +132,37 @@ onBeforeUnmount(() => {
   font-weight: 800;
   color: var(--color-heading);
   letter-spacing: -0.02em;
+}
+
+.gallery-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.filter-btn {
+  padding: 8px 20px;
+  border-radius: 100px;
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover {
+  border-color: var(--color-border-gold);
+  color: var(--color-gold);
+}
+
+.filter-btn.active {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-dark);
+  font-weight: 700;
 }
 
 .gallery-grid {
@@ -138,14 +198,6 @@ onBeforeUnmount(() => {
   filter: brightness(1.05);
 }
 
-.gallery-card--featured {
-  grid-column: span 2;
-}
-
-.gallery-card--featured img {
-  aspect-ratio: 16 / 9;
-}
-
 .gallery-toggle {
   display: flex;
   align-items: center;
@@ -170,16 +222,15 @@ onBeforeUnmount(() => {
 
 @media (max-width: 900px) {
   .gallery-grid { grid-template-columns: repeat(3, 1fr); }
-  .gallery-card--featured { grid-column: span 3; }
 }
 
 @media (max-width: 768px) {
   .gallery { padding: 72px 0; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-  .gallery-card--featured { grid-column: span 1; }
 }
 
 @media (max-width: 480px) {
   .gallery-grid { grid-template-columns: 1fr; }
+  .filter-btn { font-size: 0.78rem; padding: 6px 14px; }
 }
 </style>
