@@ -13,6 +13,7 @@
     <ScrollToTop />
   </template>
   <NotFound v-else />
+  <ScrollProgress v-if="!is404" />
 </template>
 
 <script setup lang="ts">
@@ -28,6 +29,7 @@ import Contact from './components/Contact.vue'
 import WhatsappButton from './components/WpButton.vue'
 import ScrollToTop from './components/ScrollToTop.vue'
 import NotFound from './components/NotFound.vue'
+import ScrollProgress from './components/ScrollProgress.vue'
 
 const is404 = computed(() => window.location.pathname !== '/')
 </script>
