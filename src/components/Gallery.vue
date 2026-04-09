@@ -45,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch, nextTick} from 'vue'
 import PhotoSwipeLightbox from 'photoswipe/lightbox'
 import 'photoswipe/style.css'
 import { galleryItems, categories, type Category } from '../data/gallery'
@@ -91,8 +91,13 @@ function initLightbox() {
   lightbox.init()
 }
 
-watch(visibleItems, () => {
-  setTimeout(initLightbox, 100)
+watch(activeCategory, () => {
+  isExpanded.value = false
+  nextTick(() => initLightbox())
+})
+
+watch(isExpanded, () => {
+  nextTick(() => initLightbox())
 })
 
 onMounted(() => {
