@@ -65,7 +65,7 @@
               <img
                 :src="item.src"
                 :alt="`${t.gallery.imgAlt} ${index + 1}`"
-                loading="lazy"
+                loading="eager"
                 decoding="async"
               />
             </a>
@@ -172,6 +172,10 @@ function initLightbox() {
     gallery: galleryEl,
     children: 'a',
     pswpModule: () => import('photoswipe'),
+    arrowPrev: true,
+    arrowNext: true,
+    zoom: false,
+    preload: [1, 2],
   })
   lightbox.init()
 }
