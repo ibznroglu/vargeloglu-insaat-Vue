@@ -12,7 +12,13 @@ Modern, fast and mobile-friendly corporate website for Vargeloğlu İnşaat. Bui
 - **Vue 3 Composition API** component-based architecture
 - **TypeScript** for type-safe development
 - **TR/EN multilingual support** — persistent language preference via localStorage
-- **PhotoSwipe 5** fullscreen gallery experience
+- **PhotoSwipe 5** fullscreen gallery with category filtering
+- **Mobile slider** with swipe support for gallery
+- **Skeleton loader** for gallery images
+- **Scroll progress bar**
+- **404 page**
+- **Google Analytics** integration
+- **SEO** meta tags, Open Graph & Twitter Card
 - Scroll animations (Intersection Observer API)
 - Mobile-first responsive design
 - WhatsApp quick contact button
@@ -32,6 +38,7 @@ Modern, fast and mobile-friendly corporate website for Vargeloğlu İnşaat. Bui
 ## 📦 Installation
 
 Node.js **>= 20.19.0** is required.
+
 ```bash
 # Install dependencies
 npm install
@@ -49,10 +56,17 @@ npm run preview
 ## 📁 Project Structure
 ```
 ├── public/
-│   └── favicon.png
+│   ├── favicon.png
+│   ├── og-image.jpg
+│   ├── robots.txt
+│   └── sitemap.xml
 ├── src/
 │   ├── assets/
-│   │   ├── gallery/             # Gallery images
+│   │   ├── gallery/
+│   │   │   ├── altyapi/         # Infrastructure & drainage images
+│   │   │   ├── beton/           # Concrete & site works images
+│   │   │   ├── tas-duvar/       # Stone masonry images
+│   │   │   └── cevre-duzenleme/ # Landscaping images
 │   │   ├── slider/              # Hero slider images
 │   │   ├── project-companies/   # Project images
 │   │   └── reference-companies/ # Reference logos
@@ -67,14 +81,16 @@ npm run preview
 │   │   ├── References.vue
 │   │   ├── Contact.vue
 │   │   ├── WpButton.vue
-│   │   └── ScrollToTop.vue
+│   │   ├── ScrollToTop.vue
+│   │   ├── ScrollProgress.vue
+│   │   └── NotFound.vue
 │   ├── composables/
 │   │   └── useLocale.ts         # Language management composable
 │   ├── i18n/
 │   │   ├── tr.ts                # Turkish translations
 │   │   └── en.ts                # English translations
 │   ├── data/
-│   │   └── gallery.ts           # Gallery image auto-import
+│   │   └── gallery.ts           # Gallery image auto-import by category
 │   ├── layouts/
 │   │   └── MainLayout.vue
 │   ├── App.vue
@@ -92,7 +108,16 @@ The site supports TR/EN languages. Language preference is saved in `localStorage
 
 ## 🖼️ Adding Gallery Images
 
-Simply add `.jpg`, `.jpeg`, `.png` or `.webp` images to `src/assets/gallery/`. Images are automatically loaded in numeric order by filename.
+Gallery images are organized by category. Add images to the corresponding folder:
+
+| Folder | Category |
+|--------|----------|
+| `src/assets/gallery/altyapi/` | Infrastructure & Drainage |
+| `src/assets/gallery/beton/` | Concrete & Site Works |
+| `src/assets/gallery/tas-duvar/` | Stone Masonry |
+| `src/assets/gallery/cevre-duzenleme/` | Landscaping |
+
+Supported formats: `.jpg`, `.jpeg`, `.png`, `.webp`. Images are automatically loaded in numeric order by filename.
 
 ## 🌐 Deployment (Vercel)
 
