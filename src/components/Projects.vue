@@ -45,6 +45,8 @@ import calista from '../assets/project-companies/calista-resort.jpg'
 import ela from '../assets/project-companies/ela-quality-resort.jpg'
 import susesi from '../assets/project-companies/susesi.jpg'
 import zeynep from '../assets/project-companies/zeynep-golf.jpg'
+import kilikya from '../assets/project-companies/kilikya.jpg'
+import sunwing from '../assets/project-companies/sunwing.jpg'
 import asatKuzey from '../assets/project-companies/asat-kuzey.webp'
 import antalyaOsb from '../assets/project-companies/antalya-osb2.jpg'
 import asatKonyaalti from '../assets/project-companies/asat-konyaalti.webp'
@@ -69,11 +71,13 @@ const projects = computed(() => [
   { title: t.value.projects.items[11], period: '2006-2007', image: ela },
   { title: t.value.projects.items[12], period: '2006-2007', image: susesi },
   { title: t.value.projects.items[13], period: '2010-2011', image: zeynep },
-  { title: t.value.projects.items[14], period: '',          image: asatKuzey },
-  { title: t.value.projects.items[15], period: '',          image: asatKonyaalti },
-  { title: t.value.projects.items[16], period: '',          image: antalyaOsb },
-  { title: t.value.projects.items[17], period: '',          image: kirkgoz },
-  { title: t.value.projects.items[18], period: '',          image: karapinar },
+  { title: t.value.projects.items[14], period: '',          image: kilikya },
+  { title: t.value.projects.items[15], period: '',          image: sunwing },
+  { title: t.value.projects.items[16], period: '',          image: asatKuzey },
+  { title: t.value.projects.items[17], period: '',          image: asatKonyaalti },
+  { title: t.value.projects.items[18], period: '',          image: antalyaOsb },
+  { title: t.value.projects.items[19], period: '',          image: kirkgoz },
+  { title: t.value.projects.items[20], period: '',          image: karapinar },
 ])
 </script>
 

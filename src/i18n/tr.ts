@@ -65,6 +65,8 @@ export const tr = {
     'Ela Quality Resort Otel',
     'Susesi Luxury Resort',
     'Zeynep Golf Resort Otel',
+    'Kilikya Palace',
+    'Sunwing Resort Barut Hotels',
     'ASAT Kuzey Antalya İçme Suyu Tesisi (Alt Yüklenici)',
     'ASAT Konyaaltı Yağmursuyu İnşaatı (Alt Yüklenici)',
     'Antalya OSB 2. Etap',

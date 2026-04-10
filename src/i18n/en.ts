@@ -65,6 +65,8 @@ export const en = {
     'Ela Quality Resort',
     'Susesi Luxury Resort',
     'Zeynep Golf Resort',
+    'Kilikya Palace',
+    'Sunwing Resort Barut Hotels',
     'ASAT North Antalya Water Supply Facility (Subcontractor)',
     'ASAT Konyaaltı Stormwater Construction (Subcontractor)',
     'Antalya OSB Phase 2',
