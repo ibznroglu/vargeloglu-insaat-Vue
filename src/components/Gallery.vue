@@ -25,6 +25,8 @@
           :key="item.id"
           :href="item.src"
           class="gallery-card"
+          :data-pswp-width="item.width"
+          :data-pswp-height="item.height"
           :aria-label="`${t.gallery.imgAlt} ${index + 1}`"
         >
           <div class="skeleton"></div>
@@ -56,6 +58,8 @@
               :key="item.id"
               :href="item.src"
               class="slider-card"
+              :data-pswp-width="item.width"
+              :data-pswp-height="item.height"
               :aria-label="`${t.gallery.imgAlt} ${index + 1}`"
             >
               <img
