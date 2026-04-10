@@ -65,7 +65,7 @@
               <img
                 :src="item.src"
                 :alt="`${t.gallery.imgAlt} ${index + 1}`"
-                loading="eager"
+                loading="lazy"
                 decoding="async"
               />
             </a>
@@ -172,10 +172,6 @@ function initLightbox() {
     gallery: galleryEl,
     children: 'a',
     pswpModule: () => import('photoswipe'),
-    arrowPrev: true,
-    arrowNext: true,
-    zoom: false,
-    preload: [1, 2],
   })
   lightbox.init()
 }
@@ -427,5 +423,8 @@ onBeforeUnmount(() => {
 @media (max-width: 480px) {
   .filter-btn { font-size: 0.78rem; padding: 6px 14px; }
   .slider-btn { width: 32px; height: 32px; }
+}
+:global(.pswp--touch .pswp__button--arrow) {
+  visibility: visible !important;
 }
 </style>
