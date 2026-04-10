@@ -81,7 +81,6 @@ export const tr = {
   showLess: 'Daha Az Göster',
   imgAlt: 'Vargeloğlu İnşaat galeri görseli',
   categories: {
-    all: 'Tümü',
     altyapi: 'Altyapı & Drenaj',
     beton: 'Beton & Saha İşleri',
     'tas-duvar': 'Taş Duvar',

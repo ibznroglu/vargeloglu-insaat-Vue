@@ -18,7 +18,8 @@
         </button>
       </div>
 
-      <div id="gallery-grid" class="gallery-grid">
+      <!-- Desktop grid -->
+      <div v-if="!isMobile" id="gallery-grid" class="gallery-grid">
         <a
           v-for="(item, index) in visibleItems"
           :key="item.id"
@@ -39,8 +40,52 @@
         </a>
       </div>
 
+      <!-- Mobile slider -->
+      <div v-else class="mobile-slider">
+        <button class="slider-btn slider-btn--prev" @click="prevSlide" :disabled="currentSlide === 0">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+        </button>
+
+        <div class="slider-track" ref="sliderTrack" @touchstart="onTouchStart" @touchend="onTouchEnd">
+          <div
+            class="slider-inner"
+            :style="{ transform: `translateX(-${currentSlide * 100}%)` }"
+          >
+            <a
+              v-for="(item, index) in filteredItems"
+              :key="item.id"
+              :href="item.src"
+              class="slider-card"
+              :data-pswp-width="item.width"
+              :data-pswp-height="item.height"
+              :aria-label="`${t.gallery.imgAlt} ${index + 1}`"
+            >
+              <img
+                :src="item.src"
+                :alt="`${t.gallery.imgAlt} ${index + 1}`"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          </div>
+        </div>
+
+        <button class="slider-btn slider-btn--next" @click="nextSlide" :disabled="currentSlide === filteredItems.length - 1">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </button>
+      </div>
+
+      <div v-if="isMobile" class="slider-counter">
+        {{ currentSlide + 1 }} / {{ filteredItems.length }}
+      </div>
+
+      <!-- Desktop show more -->
       <button
-        v-if="filteredItems.length > previewCount"
+        v-if="!isMobile && filteredItems.length > previewCount"
         type="button"
         class="gallery-toggle"
         @click="isExpanded = !isExpanded"
@@ -62,30 +107,51 @@ const { t } = useLocale()
 
 const previewCount = 12
 const isExpanded = ref(false)
-const activeCategory = ref<Category | 'all'>('all')
+const activeCategory = ref<Category>('altyapi')
+const isMobile = ref(false)
+const currentSlide = ref(0)
 let lightbox: PhotoSwipeLightbox | null = null
+let touchStartX = 0
 
-const filterButtons = computed(() => [
-  { key: 'all' as const, label: t.value.gallery.categories.all },
-  ...categories.map(cat => ({
+const filterButtons = computed(() =>
+  categories.map(cat => ({
     key: cat,
     label: t.value.gallery.categories[cat],
-  })),
-])
+  }))
+)
 
 const filteredItems = computed(() =>
-  activeCategory.value === 'all'
-    ? galleryItems
-    : galleryItems.filter(item => item.category === activeCategory.value)
+  galleryItems.filter(item => item.category === activeCategory.value)
 )
 
 const visibleItems = computed(() =>
   isExpanded.value ? filteredItems.value : filteredItems.value.slice(0, previewCount)
 )
 
-function setCategory(cat: Category | 'all') {
+function setCategory(cat: Category) {
   activeCategory.value = cat
   isExpanded.value = false
+  currentSlide.value = 0
+}
+
+function prevSlide() {
+  if (currentSlide.value > 0) currentSlide.value--
+}
+
+function nextSlide() {
+  if (currentSlide.value < filteredItems.value.length - 1) currentSlide.value++
+}
+
+function onTouchStart(e: TouchEvent) {
+  touchStartX = e.touches[0].clientX
+}
+
+function onTouchEnd(e: TouchEvent) {
+  const diff = touchStartX - e.changedTouches[0].clientX
+  if (Math.abs(diff) > 50) {
+    if (diff > 0) nextSlide()
+    else prevSlide()
+  }
 }
 
 function onImageLoad(e: Event) {
@@ -95,10 +161,15 @@ function onImageLoad(e: Event) {
   if (skeleton) skeleton.classList.add('hidden')
 }
 
+function syncViewport() {
+  isMobile.value = window.innerWidth < 768
+}
+
 function initLightbox() {
   lightbox?.destroy()
+  const galleryEl = isMobile.value ? '.mobile-slider' : '#gallery-grid'
   lightbox = new PhotoSwipeLightbox({
-    gallery: '#gallery-grid',
+    gallery: galleryEl,
     children: 'a',
     pswpModule: () => import('photoswipe'),
   })
@@ -114,11 +185,18 @@ watch(isExpanded, () => {
   nextTick(() => initLightbox())
 })
 
+watch(isMobile, () => {
+  nextTick(() => initLightbox())
+})
+
 onMounted(() => {
+  syncViewport()
+  window.addEventListener('resize', syncViewport)
   initLightbox()
 })
 
 onBeforeUnmount(() => {
+  window.removeEventListener('resize', syncViewport)
   lightbox?.destroy()
   lightbox = null
 })
@@ -184,6 +262,7 @@ onBeforeUnmount(() => {
   font-weight: 700;
 }
 
+/* Desktop grid */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -248,6 +327,69 @@ onBeforeUnmount(() => {
   100% { background-position: -200% 0; }
 }
 
+/* Mobile slider */
+.mobile-slider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.slider-track {
+  flex: 1;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.slider-inner {
+  display: flex;
+  transition: transform 0.35s ease;
+}
+
+.slider-card {
+  flex: 0 0 100%;
+  display: block;
+}
+
+.slider-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.slider-btn {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border-gold);
+  background: rgba(201, 168, 76, 0.08);
+  color: var(--color-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.slider-btn:hover {
+  background: rgba(201, 168, 76, 0.2);
+}
+
+.slider-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+.slider-counter {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.05em;
+}
+
 .gallery-toggle {
   display: flex;
   align-items: center;
@@ -276,11 +418,10 @@ onBeforeUnmount(() => {
 
 @media (max-width: 768px) {
   .gallery { padding: 72px 0; }
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 480px) {
-  .gallery-grid { grid-template-columns: 1fr; }
   .filter-btn { font-size: 0.78rem; padding: 6px 14px; }
+  .slider-btn { width: 32px; height: 32px; }
 }
 </style>

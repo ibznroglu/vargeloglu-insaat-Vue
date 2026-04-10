@@ -81,7 +81,6 @@ export const en = {
   showLess: 'Show Less',
   imgAlt: 'Vargeloğlu İnşaat gallery image',
   categories: {
-    all: 'All',
     altyapi: 'Infrastructure & Drainage',
     beton: 'Concrete & Site Works',
     'tas-duvar': 'Stone Masonry',
