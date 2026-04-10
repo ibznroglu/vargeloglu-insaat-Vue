@@ -65,7 +65,7 @@
               <img
                 :src="item.src"
                 :alt="`${t.gallery.imgAlt} ${index + 1}`"
-                loading="eager"
+                loading="lazy"
                 decoding="async"
               />
             </a>
