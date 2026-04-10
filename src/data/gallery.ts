@@ -4,8 +4,6 @@ export type GalleryItem = {
   id: string
   src: string
   alt: string
-  width: number
-  height: number
   category: Category
 }
 
@@ -22,8 +20,6 @@ function loadCategory(category: Category): GalleryItem[] {
       id: `${category}-${index + 1}`,
       src,
       alt: `Vargeloğlu İnşaat ${category} görseli ${index + 1}`,
-      width: 1600,
-      height: 1200,
       category,
     }))
 }
