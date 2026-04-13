@@ -42,9 +42,9 @@ export const tr = {
     items: [
       'Kanal İşleri', 'Yağmur Suyu İşleri', 'Drenaj İşleri',
       'Sulama Kanal Betonu', 'Süpürge Beton', 'Doğalgaz Hattı',
-      'Çevre Düzenleme', 'Hafriyat', 'Taşduvar',
-      'Kalıp', 'Demir', 'Beton',
-      'Duvar', 'Sıva', 'Alt Yapı',
+      'Çevre Düzenleme', 'Hafriyat', 'Taş Duvar',
+      'Kalıp', 'Demir', 'Baskı Beton',
+      'Duvar', 'Sıva', 'Altyapı',
     ],
   },
  projects: {

@@ -43,7 +43,7 @@ export const en = {
       'Canal Works', 'Stormwater Works', 'Drainage Works',
       'Irrigation Canal Concrete', 'Sweeper Concrete', 'Natural Gas Line',
       'Landscaping', 'Excavation', 'Stone Masonry',
-      'Formwork', 'Ironwork', 'Concrete',
+      'Formwork', 'Ironwork', 'Stamped Concrete',
       'Masonry', 'Plastering', 'Infrastructure',
     ],
   },
