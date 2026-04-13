@@ -82,7 +82,7 @@ export const tr = {
   imgAlt: 'Vargeloğlu İnşaat galeri görseli',
   categories: {
     altyapi: 'Altyapı & Drenaj',
-    beton: 'Beton & Saha İşleri',
+    beton: 'Saha ve Yol Betonu İşleri (Süpürge Beton & Baskı Beton)',
     'tas-duvar': 'Taş Duvar',
     'cevre-duzenleme': 'Çevre Düzenleme',
   },
