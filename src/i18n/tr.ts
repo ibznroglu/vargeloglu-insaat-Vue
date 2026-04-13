@@ -38,7 +38,7 @@ export const tr = {
     kicker: 'Faaliyetlerimiz',
     title: 'Altyapı ve saha uygulamalarında kapsamlı hizmet',
     desc: 'Farklı ölçeklerde proje ihtiyaçlarına uygun altyapı, hafriyat ve uygulama çözümleri sunuyoruz.',
-    note: 'İşleriniz itina ile yapılır. Kanalizasyon ve yağmur suyu bacaları için dairesel saç kalıplarımız mevcuttur.',
+    note: 'İşleriniz itina ile yapılır. Kanalizasyon ve yağmur suyu bacaları için dairesel sac kalıplarımız mevcuttur.',
     items: [
       'Kanal İşleri', 'Yağmur Suyu İşleri', 'Drenaj İşleri',
       'Sulama Kanal Betonu', 'Süpürge Beton', 'Doğalgaz Hattı',
