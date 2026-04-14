@@ -82,7 +82,7 @@ export const en = {
   imgAlt: 'Vargeloğlu İnşaat gallery image',
   categories: {
     altyapi: 'Infrastructure & Drainage',
-    beton: 'Site & Road Concrete Works (Sweeper Concrete & Stamped Concrete)',
+    beton: 'Site & Road Concrete Works',
     'tas-duvar': 'Stone Masonry',
     'cevre-duzenleme': 'Landscaping',
   },
