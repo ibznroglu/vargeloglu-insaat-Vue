@@ -54,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onBeforeUnmount, ref } from 'vue'
+import { onMounted, onBeforeUnmount, ref, watch } from 'vue'
 import { useLocale } from '../composables/useLocale'
 
 const { t, current, toggleLocale } = useLocale()
@@ -65,7 +65,9 @@ const isScrolled = ref(false)
 function onScroll() {
   isScrolled.value = window.scrollY > 60
 }
-
+watch(isOpen, (val) => {
+  document.body.classList.toggle('menu-open', val)
+})
 onMounted(() => window.addEventListener('scroll', onScroll, { passive: true }))
 onBeforeUnmount(() => window.removeEventListener('scroll', onScroll))
 

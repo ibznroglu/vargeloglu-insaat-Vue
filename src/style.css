@@ -36,6 +36,12 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+.menu-open .hero-actions {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+
 img { display: block; max-width: 100%; }
 
 button, input, textarea, select { font: inherit; }
