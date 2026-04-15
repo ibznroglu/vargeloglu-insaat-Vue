@@ -35,13 +35,13 @@
     <Transition name="mobile-menu">
       <nav v-if="isOpen" class="mobile-nav" aria-label="Mobil navigasyon">
         <a
-          v-for="(item, index) in navLinks"
+          v-for="(item) in navLinks"
           :key="item.href"
           :href="item.href"
           class="mobile-nav-link"
           @click="isOpen = false"
         >
-          <span class="mobile-nav-num">{{ String(index + 1).padStart(2, '0') }}</span>
+          
           {{ t.nav[item.key] }}
         </a>
 
@@ -224,19 +224,21 @@ const navLinks = [
 .mobile-nav-link {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 14px 0;
+  padding: 13px 0;
+  padding-left: 12px;
   border-bottom: 1px solid var(--color-border);
-  font-size: 1rem;
+  border-left: 2px solid transparent;
+  font-size: 0.95rem;
   font-weight: 500;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.01em;
+  transition: color 0.2s, border-left-color 0.2s, padding-left 0.2s;
 }
 
-.mobile-nav-num {
-  font-size: 0.72rem;
-  font-weight: 700;
+.mobile-nav-link:hover {
   color: var(--color-gold);
-  font-variant-numeric: tabular-nums;
+  border-left-color: var(--color-gold);
+  padding-left: 16px;
 }
 
 .mobile-nav-cta {
