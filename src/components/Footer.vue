@@ -44,7 +44,6 @@ const navLinks = [
   { key: 'projects' as const, href: '#projeler' },
   { key: 'gallery' as const, href: '#galeri' },
   { key: 'references' as const, href: '#referanslar' },
-  { key: 'contact' as const, href: '#iletisim' },
 ]
 </script>
 
