@@ -7,8 +7,5 @@
     { "source": "/Referanslar.html",   "destination": "/#referanslar", "statusCode": 301 },
     { "source": "/Projeler.html",      "destination": "/#projeler",    "statusCode": 301 },
     { "source": "/ProjeDetay:rest(.*)","destination": "/#projeler",    "statusCode": 301 }
-  ],
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
