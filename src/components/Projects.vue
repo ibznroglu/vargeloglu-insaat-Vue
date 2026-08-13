@@ -14,7 +14,7 @@
           :class="`reveal-delay-${(i % 3) + 1}`"
         >
           <div class="project-img-wrap">
-            <img :src="project.image" :alt="project.title" class="project-img" />
+            <img :src="project.image" :alt="project.title" class="project-img" loading="lazy" decoding="async" />
             <div class="project-overlay">
               <span class="project-period-badge">{{ project.period }}</span>
             </div>

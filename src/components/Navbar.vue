@@ -2,7 +2,7 @@
   <header class="navbar" :class="{ 'navbar--scrolled': isScrolled }">
     <div class="container navbar-inner">
       <a href="#top" class="brand" aria-label="Vargeloğlu İnşaat ana sayfa">
-        <img src="../assets/logo.png" alt="Vargeloğlu İnşaat" class="brand-logo" />
+        <img src="../assets/logo.webp" alt="Vargeloğlu İnşaat" class="brand-logo" />
       </a>
 
       <nav class="desktop-nav" :aria-label="t.nav.home">

@@ -16,7 +16,7 @@
           :class="`reveal-delay-${(i % 4) + 1}`"
           :aria-label="item.title"
         >
-          <img :src="item.image" :alt="item.title" class="ref-img" />
+          <img :src="item.image" :alt="item.title" class="ref-img" loading="lazy" decoding="async" />
           <span class="ref-name">{{ item.title }}</span>
         </a>
       </div>

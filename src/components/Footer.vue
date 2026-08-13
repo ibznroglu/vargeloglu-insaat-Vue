@@ -3,7 +3,7 @@
     <div class="footer-top-line"></div>
     <div class="container footer-inner">
       <div class="footer-brand">
-        <img src="../assets/logo.png" alt="Vargeloğlu İnşaat" class="footer-logo-img" />
+        <img src="../assets/logo.webp" alt="Vargeloğlu İnşaat" class="footer-logo-img" />
         <p class="footer-tagline">{{ t.footer.tagline }}</p>
       </div>
 
