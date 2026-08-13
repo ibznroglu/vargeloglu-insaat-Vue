@@ -1,4 +1,13 @@
 {
+  "redirects": [
+    { "source": "/index.html",         "destination": "/",             "statusCode": 301 },
+    { "source": "/Default.aspx",       "destination": "/",             "statusCode": 301 },
+    { "source": "/Default.html",       "destination": "/",             "statusCode": 301 },
+    { "source": "/iletisim.html",      "destination": "/#iletisim",    "statusCode": 301 },
+    { "source": "/Referanslar.html",   "destination": "/#referanslar", "statusCode": 301 },
+    { "source": "/Projeler.html",      "destination": "/#projeler",    "statusCode": 301 },
+    { "source": "/ProjeDetay:rest(.*)","destination": "/#projeler",    "statusCode": 301 }
+  ],
   "rewrites": [
     { "source": "/(.*)", "destination": "/index.html" }
   ]
