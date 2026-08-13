@@ -3,11 +3,13 @@
     <div class="hero-bg">
       <transition name="slide-fade">
         <img
-          :key="currentIndex"
-          :src="slides[currentIndex].src"
-          :alt="`slide-${currentIndex}`"
-          class="hero-bg-img"
-        />
+        :key="currentIndex"
+        :src="slides[currentIndex].src"
+        :alt="`slide-${currentIndex}`"
+         class="hero-bg-img"
+         fetchpriority="high"
+         decoding="async"
+         />
       </transition>
       <div class="hero-overlay"></div>
     </div>
