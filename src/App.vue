@@ -1,23 +1,19 @@
 <template>
-  <template v-if="!is404">
-    <MainLayout>
-      <Hero />
-      <CompanyIntro />
-      <Services />
-      <Projects />
-      <Gallery />
-      <References />
-      <Contact />
-    </MainLayout>
-    <WhatsappButton />
-    <ScrollToTop />
-  </template>
-  <NotFound v-else />
-  <ScrollProgress v-if="!is404" />
+  <MainLayout>
+    <Hero />
+    <CompanyIntro />
+    <Services />
+    <Projects />
+    <Gallery />
+    <References />
+    <Contact />
+  </MainLayout>
+  <WhatsappButton />
+  <ScrollToTop />
+  <ScrollProgress />
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
 import MainLayout from './layouts/MainLayout.vue'
 import Hero from './components/Hero.vue'
 import CompanyIntro from './components/CompanyIntro.vue'
@@ -28,8 +24,5 @@ import References from './components/References.vue'
 import Contact from './components/Contact.vue'
 import WhatsappButton from './components/WpButton.vue'
 import ScrollToTop from './components/ScrollToTop.vue'
-import NotFound from './components/NotFound.vue'
 import ScrollProgress from './components/ScrollProgress.vue'
-
-const is404 = computed(() => window.location.pathname !== '/')
 </script>
